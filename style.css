@@ -908,3 +908,78 @@ ion-icon {
     /* Add any additional mobile styles here */
 
 }
+
+
+/* Header styles for all devices */
+.header {
+    position: fixed; /* Keeps the header at the top */
+    top: 0;
+    width: 100%; /* Full width */
+    z-index: 10; /* Above other content */
+    background-color: #ffffff; /* Optional background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.logo-image {
+    height: auto;
+    max-height: 90px; /* Adjust as needed */
+    width: auto;
+}
+
+/* Header Top List Styles */
+.header-top-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.header-top-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Space between items */
+}
+
+.item-title, .item-link, .item-text {
+    margin-left: 5px; /* Space after icon */
+    color: #333; /* Dark text for readability */
+}
+
+/* Icons */
+ion-icon {
+    font-size: 20px; /* Adjust icon size */
+    color: #007bff; /* Icon color */
+}
+
+/* Link Styling */
+.item-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.item-link:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-top-item {
+        margin-bottom: 10px; /* Spacing between items in column layout */
+    }
+
+    .logo-image {
+        max-height: 60px; /* Smaller logo for mobile */
+    }
+}

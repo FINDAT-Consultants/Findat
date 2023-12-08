@@ -856,3 +856,46 @@ ion-icon {
     /* Rest of your mobile styles */
     /* ... */
 }
+
+/* Mobile-first styles go here */
+@media screen and (max-width: 768px) {
+    /* Hide sidebar by default */
+    .header .sidebar {
+        display: none;
+    }
+
+    /* Show sidebar when menu button is clicked */
+    .header.mobile-open .sidebar {
+        display: block;
+    }
+}
+
+/* Styles for the menu toggle button */
+.header .menu-toggle {
+    display: none; /* Hide the button on larger screens */
+}
+
+/* Add styles for the sidebar */
+.header .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    overflow-y: auto;
+    transition: left 0.3s ease-in-out;
+}
+
+.header .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header .sidebar li {
+    padding: 10px;
+}
+
+/* Rest of your styles */
+/* ... */

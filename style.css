@@ -970,7 +970,7 @@ ion-icon {
 }
 
 /* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 750px) {
     .header-content {
         flex-direction: column;
     }
@@ -986,7 +986,7 @@ ion-icon {
 
 
 /* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 750px) {
     .header-content {
         flex-direction: column;
     }
@@ -1001,6 +1001,6 @@ ion-icon {
 
     /* Adjusting font size for header descriptions */
     .item-title, .item-link, .item-text {
-        font-size: 10px; /* Smaller font size for mobile */
+        font-size: 7px; /* Smaller font size for mobile */
     }
 }

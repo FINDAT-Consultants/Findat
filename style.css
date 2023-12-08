@@ -1004,3 +1004,32 @@ ion-icon {
         font-size: 7px; /* Smaller font size for mobile */
     }
 }
+
+/* Styles for the GIF container on all devices */
+.background-gif-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.background-gif {
+    background-image: url('path_to_your_gif.gif'); /* Replace with your GIF path */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .background-gif-container {
+        /* Adjust the height or other properties for mobile view */
+        height: auto; /* Example: change height to auto or a specific value */
+    }
+
+    .background-gif {
+        /* Additional adjustments for the GIF on mobile */
+        background-size: contain; /* Change to 'contain' to ensure the whole GIF is visible */
+    }
+}
+

@@ -983,3 +983,24 @@ ion-icon {
         max-height: 60px; /* Smaller logo for mobile */
     }
 }
+
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-top-item {
+        margin-bottom: 10px; /* Spacing between items in column layout */
+    }
+
+    .logo-image {
+        max-height: 60px; /* Smaller logo for mobile */
+    }
+
+    /* Adjusting font size for header descriptions */
+    .item-title, .item-link, .item-text {
+        font-size: 10px; /* Smaller font size for mobile */
+    }
+}

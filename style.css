@@ -689,7 +689,7 @@ ion-icon {
     top: 0; /* Aligns the header at the top of the viewport */
     width: 100%; /* Ensures the header stretches across the full width */
     z-index: 10; /* Keeps the header above all other content */
-    background-color: #ffffff18; /* Optional: Set a background color */
+    background-color: #ffffff; /* Optional: Set a background color */
 }
 
 .footer {
@@ -720,91 +720,7 @@ ion-icon {
 }
 
   /* Mobile-first styles go here */
-        @media screen and (max-width: 768px) {
-            /* Adjust styles for smaller screens */
-
-            /* Header styles */
-            .header-content {
-                flex-direction: column;
-            }
-
-            .header-top-item {
-                margin: 10px 0;
-            }
-
-            /* Banner styles */
-            #banner .banner-text h1 {
-                font-size: 44px;
-            }
-
-            /* Features section styles */
-            .features {
-                flex-basis: 100%;
-            }
-
-            .features-img {
-                flex-basis: 100%;
-            }
-
-            .features-img img {
-                width: 100%;
-            }
-
-            .features h1 {
-                text-align: center;
-                margin-bottom: 10px;
-            }
-
-            .features-desc {
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 40px;
-            }
-
-            /* Service section styles */
-            #service .title-text h1 {
-                font-size: 35px;
-            }
-
-            .single-service {
-                flex-basis: 100%;
-                margin-bottom: 30px;
-            }
-
-            .service-desc p {
-                font-size: 12px;
-            }
-
-            hr {
-                margin: 5px auto;
-            }
-
-            .single-service:hover .service-desc {
-                bottom: 25% !important;
-            }
-
-            /* Testimonial section styles */
-            .testimonial-col {
-                flex-basis: 100%;
-            }
-
-            .testimonial-col p {
-                font-size: 14px;
-            }
-
-            /* Footer section styles */
-            .footer-left, .footer-right {
-                flex-basis: 100%;
-                font-size: 14px;
-            }
-
-            .footer-img {
-                top: 25%;
-            }
-        }
-
-/* Mobile-first styles go here */
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     /* Adjust styles for smaller screens */
 
     /* Header styles */
@@ -816,86 +732,73 @@ ion-icon {
         margin: 10px 0;
     }
 
-    /* Reduce opacity for header text */
-    .header h1,
-    .header h2,
-    .header h3,
-    .header h4,
-    .header h5,
-    .header h6 {
-        opacity: 0.7; /* Adjust the opacity value as needed */
+    /* Banner styles */
+    #banner .banner-text h1 {
+        font-size: 44px;
     }
 
-    /* Rest of your mobile styles */
-    /* ... */
-}
+    /* Features section styles */
+    .features {
+        flex-basis: 100%;
+    }
 
-/* Mobile-first styles go here */
-@media screen and (max-width: 768px) {
-    /* Adjust styles for smaller screens */
+    .features-img {
+        flex-basis: 100%;
+    }
 
-    /* Header styles */
-    .header-content {
+    .features-img img {
+        width: 100%;
+    }
+
+    .features h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .features-desc {
         flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
     }
 
-    .header-top-item {
-        margin: 10px 0;
+    /* Service section styles */
+    #service .title-text h1 {
+        font-size: 35px;
     }
 
-    /* Reduce font size for header text */
-    .header h1,
-    .header h2,
-    .header h3,
-    .header h4,
-    .header h5,
-    .header h6 {
-        font-size: 14px; /* Adjust the font size value as needed */
+    .single-service {
+        flex-basis: 100%;
+        margin-bottom: 30px;
     }
 
-    /* Rest of your mobile styles */
-    /* ... */
-}
-
-/* Mobile-first styles go here */
-@media screen and (max-width: 768px) {
-    /* Hide sidebar by default */
-    .header .sidebar {
-        display: none;
+    .service-desc p {
+        font-size: 12px;
     }
 
-    /* Show sidebar when menu button is clicked */
-    .header.mobile-open .sidebar {
-        display: block;
+    hr {
+        margin: 5px auto;
+    }
+
+    .single-service:hover .service-desc {
+        bottom: 25% !important;
+    }
+
+    /* Testimonial section styles */
+    .testimonial-col {
+        flex-basis: 100%;
+    }
+
+    .testimonial-col p {
+        font-size: 14px;
+    }
+
+    /* Footer section styles */
+    .footer-left, .footer-right {
+        flex-basis: 100%;
+        font-size: 14px;
+    }
+
+    .footer-img {
+        top: 25%;
     }
 }
-
-/* Styles for the menu toggle button */
-.header .menu-toggle {
-    display: none; /* Hide the button on larger screens */
-}
-
-/* Add styles for the sidebar */
-.header .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    height: 100%;
-    overflow-y: auto;
-    transition: left 0.3s ease-in-out;
-}
-
-.header .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.header .sidebar li {
-    padding: 10px;
-}
-
-/* Rest of your styles */
-/* ... */

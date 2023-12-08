@@ -802,3 +802,30 @@ ion-icon {
                 top: 25%;
             }
         }
+
+/* Mobile-first styles go here */
+@media screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+
+    /* Header styles */
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-top-item {
+        margin: 10px 0;
+    }
+
+    /* Reduce opacity for header text */
+    .header h1,
+    .header h2,
+    .header h3,
+    .header h4,
+    .header h5,
+    .header h6 {
+        opacity: 0.7; /* Adjust the opacity value as needed */
+    }
+
+    /* Rest of your mobile styles */
+    /* ... */
+}

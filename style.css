@@ -802,3 +802,109 @@ ion-icon {
         top: 25%;
     }
 }
+
+
+
+/* Add your existing styles here */
+
+/* Media queries for mobile phones */
+@media screen and (max-width: 768px) {
+    /* General mobile styles */
+
+    /* Reset font size for the whole page */
+    body {
+        font-size: 16px;
+    }
+
+    /* Banner styles */
+    #banner .banner-text h1 {
+        font-size: 30px; /* Decrease font size for mobile */
+        padding-top: 80px; /* Adjust spacing */
+    }
+
+    .banner-text p {
+        font-size: 16px; /* Decrease font size for mobile */
+    }
+
+    .banner-btn a {
+        width: 120px; /* Adjust button width */
+        font-size: 14px; /* Decrease font size for mobile */
+        padding: 8px 0; /* Adjust button padding */
+    }
+
+    /* Features section styles */
+    .title-text h1 {
+        font-size: 35px; /* Decrease font size for mobile */
+        padding-bottom: 30px; /* Adjust spacing */
+    }
+
+    .features h1 {
+        font-size: 24px; /* Decrease font size for mobile */
+    }
+
+    .features-desc {
+        margin-bottom: 20px; /* Adjust spacing */
+    }
+
+    .feature-icon .fa {
+        width: 40px;
+        height: 40px;
+        font-size: 24px; /* Decrease icon size for mobile */
+        line-height: 40px;
+    }
+
+    .feature-text p {
+        font-size: 14px; /* Decrease font size for mobile */
+        padding: 0 10px; /* Adjust padding */
+    }
+
+    /* Service section styles */
+    #service .title-text h1 {
+        font-size: 30px; /* Decrease font size for mobile */
+        padding-bottom: 20px; /* Adjust spacing */
+    }
+
+    .single-service p {
+        font-size: 12px; /* Decrease font size for mobile */
+    }
+
+    hr {
+        margin: 5px auto;
+        width: 40%; /* Adjust line width for mobile */
+    }
+
+    /* Testimonial section styles */
+    .testimonial-col p {
+        font-size: 14px; /* Decrease font size for mobile */
+    }
+
+    /* Footer section styles */
+    .footer-left, .footer-right {
+        font-size: 14px; /* Decrease font size for mobile */
+    }
+
+    .footer-img {
+        max-width: 250px; /* Adjust image size for mobile */
+        top: 20%; /* Adjust image position */
+    }
+
+    .social-links .fa {
+        height: 30px;
+        width: 30px;
+        font-size: 18px; /* Decrease icon size for mobile */
+        line-height: 30px;
+        margin: 30px 5px 0; /* Adjust margin for mobile */
+    }
+
+    .footer p {
+        margin: 0;
+    }
+
+    .footer .social-links p {
+        font-size: 12px; /* Decrease font size for mobile */
+        margin-top: 15px; /* Adjust spacing */
+    }
+
+    /* Add any additional mobile styles here */
+
+}

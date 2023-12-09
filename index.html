@@ -67,9 +67,9 @@
             <h2>The only place</h2>
             <p>Where you can get it done</p>
             <div class="banner-btn">
-                <a href="#" class="read-more-btn"><span></span> Read More</a>
-
+                <a href="#" class="read-more-btn" onclick="toggleMoreInfo()"><span></span> Read More</a>
             </div>
+            
         </div>
         </div>
 
@@ -82,13 +82,54 @@
                 <li><a href="#banner">HOME</a></li>
                 <li><a href="#feature">FEATURES</a></li>
                 <li><a href="#service">BUSINESS SERVICES</a></li>
-                <li><a href="#testimonial">EDUCATIONAL SERVICES</a></li>
+                <li class="dropdown">
+                    <a href="#">EDUCATIONAL SERVICES <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#testimonial">Courses</a></li>
+                        <li><a href="https://meet.google.com/hgy-wnnn-nej" target="_blank">Online - Classes</a></li> <!-- Replace YOUR_GOOGLE_MEET_LINK_HERE with the actual Google Meet link -->
+                        <li><a href="#" class="open-registration">Registration</a></li>
+                        
+                    </ul>
                 <li><a href="Pages/tutors.html">TUTORS</a></li>
                 <li><a href="Pages/Get_A_Quote.html">GET A QUOTE</a></li>
 
             </ul>
         </nav>
     </div>
+
+<!-- Registration Form Modal -->
+<div id="registration-form" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="https://script.google.com/macros/s/AKfycbxT4CUKy57upd-d3kWysBEdzOVbwgCfpeizTWWE49WKTN74Z_y2GOwPgK2KiBZ9j27_5w/exec" method="post" name="registration-form">
+            <h2>Class Registration</h2>
+            <input type="text" name="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+
+            <fieldset>
+                <legend>Select your course of interest:</legend>
+                <label><input type="checkbox" name="msexcel" value="✔"> MS Excel</label>
+                <label><input type="checkbox" name="sql" value="✔"> SQL</label>
+                <label><input type="checkbox" name="mspowerbi" value="✔"> MS Power Bi</label>
+                <label><input type="checkbox" name="tableau" value="✔"> Tableau</label>
+
+            </fieldset>
+
+            <input type="submit" value="Submit" id="submit">
+        </form>
+
+        <div id="formResponse"></div>
+
+    </div>
+</div>
+
+
+
+
+
+
     <div id="manuBtn">
         <img src="images/menu.png" alt="" id="menu">
     </div>
@@ -179,7 +220,7 @@
                 <div class="service-desc">
                     <h3>Technological Development</h3>
                     <hr>
-                    <p>Building intuitive websites and applications to automate and optimize business processes.</p>
+                    <p>Building intuitive websites and applications to automate and optimize business processes. However, we also provide A.I - (Artificial Intelligence) related services</p>
                 </div>
             </div>
         </div>
@@ -237,7 +278,7 @@
         <!-- Pop-up Modal -->
 <div id="readMoreModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        
         <h2>More Information</h2>
         <h4>Our Vision:</h4>
         <p>At FINDAT Consultants, we see a future where data is the catalyst for growth, innovation, and transformation across all industries. Our vision extends beyond providing data-driven solutions for organizations; we are committed to educating and empowering individuals from various fields with the skills to harness the power of data analytics.</p>
@@ -322,27 +363,51 @@
    // Get the modal
 var modal = document.getElementById("readMoreModal");
 
-// Get the button that opens the modal
-var btn = document.querySelector(".read-more-btn"); // Use the class or ID of your Read More button
 
-// Get the <span> element that closes the modal
-var span = document.querySelector(".modal .close"); // Use the correct class or ID for your close button
+// JavaScript for opening and closing the registration modal
+var modal = document.getElementById('registration-form');
+        var btn = document.getElementsByClassName('open-registration')[0];
+        var span = document.getElementsByClassName('close')[0];
+        var form = document.getElementById('registrationForm');
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+        btn.onclick = function() {
+            modal.style.display = "block";
+            form.reset(); // Reset the form when the modal is opened
+        }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
-// Close the modal if the user clicks outside of it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // JavaScript for form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('formResponse').innerText = text;
+                this.reset(); // Reset the form after submission
+                modal.style.display = "none"; // Optionally, close the modal after submission
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        var form = document.getElementById('registrationForm');
+var refreshBtn = document.getElementsByClassName('refresh')[0];
+
+refreshBtn.onclick = function() {
+    form.reset(); // Reset the form when the refresh icon is clicked
 }
 
 </script>
@@ -397,6 +462,102 @@ $(document).ready(function() {
 });
 
 </script>
+
+<script>
+    let dropdownVisible = false;
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // JavaScript to toggle the dropdown
+    function toggleDropdown() {
+        if (dropdownVisible) {
+            dropdownMenu.style.display = 'none';
+        } else {
+            dropdownMenu.style.display = 'block';
+        }
+        dropdownVisible = !dropdownVisible;
+    }
+
+    // JavaScript to add underline effect to selected option
+    function selectOption(option) {
+        const dropdownItems = document.querySelectorAll('.dropdown-content li');
+        
+        // Remove underline effect from all items
+        dropdownItems.forEach(item => item.classList.remove('selected'));
+        
+        // Add underline effect to the selected item
+        option.classList.add('selected');
+        
+        // You can add logic here to handle the selected option
+        alert('Selected: ' + option.innerText);
+    }
+</script>
+<script>
+    // JavaScript to open a pop-up when a dropdown item is clicked
+    function openPopup(option) {
+        // You can add logic here to open a pop-up based on the selected option
+        alert('Clicked on ' + option);
+    }
+</script>
+
+<script>
+
+ // JavaScript for opening and closing the registration modal
+ var modal = document.getElementById('registration-form');
+        var btn = document.getElementsByClassName('open-registration')[0];
+        var span = document.getElementsByClassName('close')[0];
+        var form = document.getElementById('registrationForm');
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+            form.reset(); // Reset the form when the modal is opened
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // JavaScript for form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('formResponse').innerText = text;
+                this.reset(); // Reset the form after submission
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+</script>
+
+<script>
+    // JavaScript function to toggle the visibility of the modal
+    function toggleMoreInfo() {
+        var modal = document.getElementById("readMoreModal");
+        modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    // Add an event listener to close the modal when clicking outside of it
+    window.addEventListener("click", function(event) {
+        var modal = document.getElementById("readMoreModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+
 </body>
 
 </html>

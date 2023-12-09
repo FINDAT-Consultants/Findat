@@ -1129,7 +1129,7 @@ ion-icon {
     margin-top: 5px; /* Spacing above the input field */
     border: none;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.5); /* Slightly opaque white */
+    background: rgb(255, 255, 255); /* Slightly opaque white */
     color: white; /* Set input text color to white */
 }
 

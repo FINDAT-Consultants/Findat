@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title> FINDAT Consultants - Home</title>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <link rel="icon" type="image/png" href="Favicon/favicon-32x32.png" sizes="400x400">
+    
+</head>
+</head>
+
+<body class="no-scrollbar">
+
+
+<body>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-content">
+                    <img src="images/LOGO.png" alt="Logo" class="logo-image">
+                    <ul class="header-top-list">
+                        <li class="header-top-item">
+                            <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                            <p class="item-title"><strong style="color: rgb(239, 149, 3);">Call Us :</strong></p>
+                            <a href="tel:01234567895" class="item-link">+260 976 913 843</a>
+                        </li>
+                        <li class="header-top-item">
+                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                            <p class="item-title"></p>
+                            <p class="item-text"><strong style="color: rgb(22, 215, 93);">Operating Days: Monday - Friday, 08 am - 09 pm</strong></p>
+
+
+                        </li>
+                        <!-- ... -->
+                        
+                        <li class="header-top-item">
+                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                            <p class="item-title"><strong style="color: #FF5733;">Status :</strong></p>
+                            <p class="item-text" id="opening-status" class="status">Checking...</p>
+                            <div id="manuBtn">
+                                <img src="images/menu.png" alt="" id="menu">
+                            </div>
+                        </li>
+    <!-- ... -->
+         
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+<body>
+    <div id="preloader"></div>
+    <section id="banner">
+        <div class="ribbon">
+            
+            
+             <div class="banner-text">
+            <h2>The only place</h2>
+            <p>Where you can get it done</p>
+            <div class="banner-btn">
+                <a href="#" class="read-more-btn" onclick="toggleMoreInfo()"><span></span> Read More</a>
+            </div>
+            
+        </div>
+        </div>
+
+
+
+    </section>
+    <div id="sideNav">
+        <nav>
+            <ul>
+                <li><a href="#banner">HOME</a></li>
+                <li><a href="#feature">FEATURES</a></li>
+                <li><a href="#service">BUSINESS SERVICES</a></li>
+                <li class="dropdown">
+                    <a href="#">EDUCATIONAL SERVICES <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#testimonial">Courses</a></li>
+                        <li><a href="https://meet.google.com/hgy-wnnn-nej" target="_blank">Online - Classes</a></li> <!-- Replace YOUR_GOOGLE_MEET_LINK_HERE with the actual Google Meet link -->
+                        <li><a href="#" class="online-Exams" onclick="openOnlineExams()">Online - Exams</a></li>
+
+                        <li><a href="#" class="open-registration">Registration</a></li>
+                        
+                    </ul>
+                <li><a href="Pages/tutors.html">TUTORS</a></li>
+                <li><a href="Pages/Get_A_Quote.html">GET A QUOTE</a></li>
+                <li><a href="Pages/Payments.html">PAYMENT</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+
+<!-- Registration Form Modal -->
+<div id="registration-form" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="https://script.google.com/macros/s/AKfycbxT4CUKy57upd-d3kWysBEdzOVbwgCfpeizTWWE49WKTN74Z_y2GOwPgK2KiBZ9j27_5w/exec" method="post" name="registration-form">
+            <h2>Course Registration</h2>
+            <input type="date" name="date" placeholder="Registration Date" required>
+            <input type="text" name="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+            <input type="text" name="location" placeholder="Location" required>
+
+            <fieldset>
+                <legend>Select your course of interest:</legend>
+                <label><input type="checkbox" name="msexcel" value="✔"> MS Excel</label>
+                <label><input type="checkbox" name="sql" value="✔"> SQL</label>
+                <label><input type="checkbox" name="mspowerbi" value="✔"> MS Power Bi</label>
+                <label><input type="checkbox" name="tableau" value="✔"> Tableau</label>
+
+            </fieldset>
+
+            <input type="submit" value="Submit" id="submit">
+        </form>
+
+        <div id="formResponse"></div>
+
+    </div>
+</div>
+
+
+
+
+
+
+    <div id="manuBtn">
+        <img src="images/menu.png" alt="" id="menu">
+    </div>
+    <!-- Features Section -->
+    <section id="feature">
+        <div class="title-text">
+            <p>FEATURES</p>
+            <h1>Why Choose Us</h1>
+        </div>
+        <div class="feature-box">
+            <div class="features">
+                <h1>Experienced Staff</h1>
+                <div class="features-desc">
+                    <div class="feature-icon">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="feature-text">
+                        <p>Our team comprises seasoned professionals with extensive experience in finance, data analysis, and technology. Their wealth of knowledge ensures that our consultancy services are not just theoretical but grounded in real-world business practices.</p>
+                    </div>
+                </div>
+                <h1>Pre Booking Via Calls</h1>
+                <div class="features-desc">
+                    <div class="feature-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="feature-text">
+                        <p>We believe in a personal touch. You can pre-book your consultations via direct calls, allowing us to better understand your needs and tailor our services accordingly.</p>
+                    </div>
+                </div>
+                <h1>Affordable Cost</h1>
+                <div class="features-desc">
+                    <div class="feature-icon">
+                        <i class="fa fa-dollar"></i>
+                    </div>
+                    <div class="feature-text">
+                        <p>We believe in providing top-notch consultancy services at a cost that is accessible to a wide range of clients, from startups to established enterprises.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="features-img">
+                <img src="images/LOGO.png" alt="">
+            </div>
+
+
+            <!-- Shop Link (Moved to the right) -->
+<div class="shop-link">
+    <a href="Pages/Shop.html" class="shop-button underlined">Visit our Shop</a>
+</div>
+
+
+        </div>
+    </section>
+    <!-- Featured Section Ends here -->
+
+    <!-- Service Section Starts here -->
+    <section id="service">
+        <div class="title-text">
+            <p>BUSINESS SERVICES</p>
+            <h1>We Provide Better</h1>
+        </div>
+        <div class="service-box">
+            <div class="single-service">
+                <img src="images/Pic-1.png">
+                <div class="overlay"></div>
+                <div class="service-desc">
+                    <h3>Data Visualization</h3>
+                    <hr>
+                    <p>High-quality and intuitive visuals for swift insights..</p>
+                </div>
+            </div>
+            <div class="single-service">
+                <img src="images/pic-2.jpg">
+                <div class="overlay"></div>
+                <div class="service-desc">
+                    <h3>Reporting</h3>
+                    <hr>
+                    <p>High-quality reporting services in Finance, HR, Sales & Marketing, Production and Health care, transforming complex data into actionable insights for strategic decision-making.</p>
+                </div>
+            </div>
+            <div class="single-service">
+                <img src="images/pic-3.jpg">
+                <div class="overlay"></div>
+                <div class="service-desc">
+                    <h3>Data Examination</h3>
+                    <hr>
+                    <p>Analyzing specific data sets to verify their accuracy, reliability and identify anomalies.</p>
+                </div>
+            </div>
+            <div class="single-service">
+                <img src="images/pic-4.jpg">
+                <div class="overlay"></div>
+                <div class="service-desc">
+                    <h3>Technological Development</h3>
+                    <hr>
+                    <p>Building intuitive websites and applications to automate and optimize business processes. However, we also provide A.I - (Artificial Intelligence) related services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section Starts Here -->
+    <section id="testimonial">
+        <div class="background-gif-container">
+            <div class="background-gif"></div>
+        </div>
+
+        <div class="title-text">
+            <p>EDUCATIONAL SERVICES</p>
+            <h1>Courses offered include:</h1>
+        </div>
+        <div class="testimonial-row">
+            <div class="testimonial-col">
+                <div class="user">
+                    <img src="images/img-1.png" alt="">
+                    <div class="user-info">
+                        <h4>MS Excel <i class="fa fa-twitter"></i></h4>
+                        <small>End - to - End Data Analytics</small>
+                    </div>
+                </div>
+                <p>
+                    This course aims to equip participants with the essential skills and knowledge required to become proficient data analysts using Microsoft Excel. Throughout this comprehensive program, you will delve into the world of data analytics, learning how to harness the power of Excel to clean, analyze, and visualize data effectively.
+                </p>
+            </div>
+            <div class="testimonial-col">
+                <div class="user">
+                    <img src="images/img-2.png" alt="">
+                    <div class="user-info">
+                        <h4>SQL <i class="fa fa-twitter"></i></h4>
+                        <small>Database - Management</small>
+                    </div>
+                </div>
+                <p>This comprehensive SQL course is designed to equip participants with a deep understanding and practical proficiency in managing relational databases using Structured Query Language (SQL).
+                    Our primary goal is to provide you with a solid foundation in SQL, starting from the basics of crafting queries and progressing to more advanced data manipulation techniques.
+                </p>
+            </div>
+
+            <div class="testimonial-col">
+                <div class="user">
+                    <img src="images/img-3.png" alt="">
+                    <div class="user-info">
+                        <h4>MS Power Bi<i class="fa fa-twitter"></i></h4>
+                        <small>Data Visualization</small>
+                    </div>
+                </div>
+                <p>This course aims to provide participants with a comprehensive understanding of Microsoft Power BI and equip them with the practical skills necessary to create compelling data visualizations and interactive dashboards.
+                </p>
+            </div>
+        </div>
+
+        <!-- Pop-up Modal -->
+<div id="readMoreModal" class="modal">
+    <div class="modal-content">
+        
+        <h2>More Information</h2>
+        <h4>Our Vision:</h4>
+        <p>At FINDAT Consultants, we see a future where data is the catalyst for growth, innovation, and transformation across all industries. Our vision extends beyond providing data-driven solutions for organizations; we are committed to educating and empowering individuals from various fields with the skills to harness the power of data analytics.</p>
+            
+        <h4>Our Mission:</h4> 
+       <p> Our dual mission is to empower organizations by turning data into actionable insights and to educate a diverse range of professionals in the field of data analytics. We aim to bridge the gap between data and decision-making, making advanced analytics accessible to all.</p>
+        <!-- Add more content here as needed -->
+
+        <h4> What We Do:</h4>
+        Our firm specializes in providing data-driven business solutions, comprehensive educational programs in data analytics for professionals across various fields, leveraging financial expertise and the latest in AI and machine learning, and crafting customized strategies to meet the unique needs of businesses and individual learning goals.
+    
+        <h4> Our Approach:</h4>
+        Our approach combines collaborative learning and partnerships, ethical data practices, and a commitment to continuous innovation, ensuring that both our clients and students benefit from tailored, transparent, and cutting-edge education in data analytics.
+    
+        <h4> Schedule a meeting with us and will give you back insights with with Precision and Innovation.</h4>
+        You are just a call away from getting it done
+
+    </div>
+</div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com//simonjohn.mwanza" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/findat_consultants/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/92780932/admin/feed/posts/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.Youtube.com/channel/UC2OKXIauaznE1F-6A7UCKLw" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=%2B260976913843" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2023 FINDAT Consultants. All Rights Reserved.</p>
+            <p>Unauthorized duplication or publication of any materials from this site is expressly prohibited.</p>
+        </div>
+    </footer>
+
+   
+    <script>
+        var manuBtn = document.getElementById('manuBtn')
+        var sideNav = document.getElementById('sideNav')
+        var menu = document.getElementById('menu')
+        sideNav.style.right = "-250px";
+        manuBtn.onclick = function () {
+            if (sideNav.style.right == "-250px") {
+                sideNav.style.right = "0";
+                menu.src = "images/close.png";
+            }
+            else {
+                sideNav.style.right = "-250px";
+                menu.src = "images/menu.png";
+
+            }
+        }
+        // Smoth scrolling js
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 1000,
+            speedAsDuration: true
+        });
+    </script>
+
+    <!-- Script for preloader -->
+    <script>
+        var loader = document.getElementById('preloader');
+        window.addEventListener("load", function(){
+            loader.style.display = "none";
+        })
+    </script>
+
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+<script>
+   // Get the modal
+var modal = document.getElementById("readMoreModal");
+
+
+// JavaScript for opening and closing the registration modal
+var modal = document.getElementById('registration-form');
+        var btn = document.getElementsByClassName('open-registration')[0];
+        var span = document.getElementsByClassName('close')[0];
+        var form = document.getElementById('registrationForm');
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+            form.reset(); // Reset the form when the modal is opened
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // JavaScript for form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('formResponse').innerText = text;
+                this.reset(); // Reset the form after submission
+                modal.style.display = "none"; // Optionally, close the modal after submission
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        var form = document.getElementById('registrationForm');
+var refreshBtn = document.getElementsByClassName('refresh')[0];
+
+refreshBtn.onclick = function() {
+    form.reset(); // Reset the form when the refresh icon is clicked
+}
+
+</script>
+
+
+<script>
+    function updateOpeningStatus() {
+        const now = new Date();
+        const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+
+        // Define your opening hours
+        const openingTime = 8; // 8:00 AM
+        const lunchStartTime = 13; // 1:00 PM
+        const lunchEndTime = 14; // 2:00 PM
+        const closingTime = 21; // 9:00 PM
+
+        let status = "Closed";
+        let statusColor = "red"; // Default color for Closed
+
+        // Check if it's a weekday
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Business days Monday to Friday
+            if (hours >= openingTime && hours < lunchStartTime) {
+                status = "Open Now";
+                statusColor = "green";
+            } else if (hours >= lunchStartTime && hours < lunchEndTime) {
+                status = "Lunch Break";
+                statusColor = "orange";
+            } else if (hours >= lunchEndTime && hours < closingTime) {
+                status = "Open Now";
+                statusColor = "green";
+            }
+        }
+        // Sundays (0) and Saturdays (6) will fall into the default "Closed" status
+
+        // Update the status element
+        const statusElement = document.getElementById("opening-status");
+        statusElement.textContent = status;
+        statusElement.style.color = statusColor;
+    }
+
+    // Update the status every minute
+    updateOpeningStatus();
+    setInterval(updateOpeningStatus, 60000); // 60,000 milliseconds (1 minute)
+
+    // jQuery example
+$(document).ready(function() {
+    $('.menu-toggle').click(function() {
+        $('.header').toggleClass('mobile-open');
+    });
+});
+
+</script>
+
+<script>
+    let dropdownVisible = false;
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // JavaScript to toggle the dropdown
+    function toggleDropdown() {
+        if (dropdownVisible) {
+            dropdownMenu.style.display = 'none';
+        } else {
+            dropdownMenu.style.display = 'block';
+        }
+        dropdownVisible = !dropdownVisible;
+    }
+
+    // JavaScript to add underline effect to selected option
+    function selectOption(option) {
+        const dropdownItems = document.querySelectorAll('.dropdown-content li');
+        
+        // Remove underline effect from all items
+        dropdownItems.forEach(item => item.classList.remove('selected'));
+        
+        // Add underline effect to the selected item
+        option.classList.add('selected');
+        
+        // You can add logic here to handle the selected option
+        alert('Selected: ' + option.innerText);
+    }
+</script>
+<script>
+    // JavaScript to open a pop-up when a dropdown item is clicked
+    function openPopup(option) {
+        // You can add logic here to open a pop-up based on the selected option
+        alert('Clicked on ' + option);
+    }
+</script>
+
+<script>
+
+ // JavaScript for opening and closing the registration modal
+ var modal = document.getElementById('registration-form');
+        var btn = document.getElementsByClassName('open-registration')[0];
+        var span = document.getElementsByClassName('close')[0];
+        var form = document.getElementById('registrationForm');
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+            form.reset(); // Reset the form when the modal is opened
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // JavaScript for form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('formResponse').innerText = text;
+                this.reset(); // Reset the form after submission
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+</script>
+
+<script>
+    // JavaScript function to toggle the visibility of the modal
+    function toggleMoreInfo() {
+        var modal = document.getElementById("readMoreModal");
+        modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    // Add an event listener to close the modal when clicking outside of it
+    window.addEventListener("click", function(event) {
+        var modal = document.getElementById("readMoreModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+<script>
+    // Define the correct password
+    const correctPassword = "Admin@123";
+
+    // JavaScript function to prompt for the password
+    function openOnlineExams() {
+        // Prompt the user for the password
+        const enteredPassword = prompt("Enter the password to access online exams:");
+
+        // Check if the entered password is correct
+        if (enteredPassword === correctPassword) {
+            // Redirect to the exams page or open the exams in a new tab/window
+            window.location.href = "Pages/Exams.html"; // Replace with the actual URL of the exams page
+        } else {
+            // Display a message if the password is incorrect
+            alert("Incorrect password. Please get the password from the admin.");
+        }
+    }
+</script>
+
+
+</body>
+
+</html>

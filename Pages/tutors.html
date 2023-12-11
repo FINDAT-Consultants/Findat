@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<head>
+    <title>Tutors</title> <!-- Add this line to set the page title to "Tutors" -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="2/favicon-32x32.png" sizes="400x400">
+</head>
+
+<style>
+    .tutor-card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        display: inline-block;
+        width: 300px;
+    }
+
+    .tutor-photo {
+        width: 100%;
+        height: auto;
+    }
+
+    .tutor-info {
+        text-align: center;
+    }
+
+    .tutor-card:hover {
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .italic-text {
+    font-style: italic;
+}
+
+
+.tutor-card {
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    backdrop-filter: blur(10px); /* Blur effect for glassy look */
+    border-radius: 15px; /* Rounded borders */
+}
+
+/* Rest of your CSS remains the same */
+
+.contact-button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    color: #000; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px;
+    text-align: center;
+}
+
+.contact-button:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly less transparent on hover */
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #1ba893; /* Green background for better visibility */
+    color: white; /* White text */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.contact-button:hover {
+    background-color: #7c1e1e; /* Darker shade on hover */
+}
+
+.contact-button i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
+    z-index: -100; /* Place behind everything */
+}
+
+iframe {
+    width: 100vw;
+    height: 100vh;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/* Rest of your CSS */
+
+#background-gif {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
+    z-index: -100; /* Place behind everything */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars if the GIF is larger than the screen */
+}
+
+/* Rest of your CSS */
+
+.tutor-card {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        display: inline-block;
+        width: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        color: white; /* Set text color to white */
+    }
+
+    .italic-text {
+        font-style: italic;
+        color: white; /* Set text color to white */
+    }
+
+    /* Rest of your CSS remains the same */
+</style>
+<body>
+    <img src="2/tenor.gif" alt="Background GIF" id="background-gif">
+
+
+<div class="tutor-card" onclick="window.location.href='https://portfolio-simon-john.netlify.app/';">
+    <img src="2/2-PhotoRoom.jpg" alt="Tutor Photo" class="tutor-photo">
+    <div class="tutor-info">
+        <h3>Simon John - FDA</h3>
+        <p><span class="italic-text">(click to view portfolio)</span></p>
+        <a href="tel:+260976913843" class="contact-button"><i class="fas fa-phone-alt"></i> Call</a>
+        <a href="mailto:Simonjohnmwanza@gmail.com" class="contact-button"><i class="fas fa-envelope"></i> Email</a>
+    </div>
+</div>
+
+</body>
+</html>

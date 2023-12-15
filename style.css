@@ -1189,3 +1189,180 @@ ion-icon {
 .underlined {
     text-decoration: underline;
 }
+
+/* Horizontal Scroller Styling */
+#horizontal-scroller {
+    padding: 20px 0; /* Adjust padding to control space above and below the scroller */
+}
+
+#horizontal-scroller .horizontal-scroller {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 0 auto; /* Centering the scroller */
+}
+
+#horizontal-scroller .scroll-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    width: 200px; /* Adjust the width based on your design */
+    min-height: 250px; /* Adjust the height as needed */
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff; /* Background color of the card */
+    border: 1px solid #ddd; /* Border color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow for depth */
+    width: 100%; /* Card width */
+    padding: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+}
+
+.card-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center; /* Center align the header */
+}
+
+.card-body {
+    font-size: 14px;
+    text-align: center; /* Center align the body text */
+}
+
+@keyframes scrollLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+
+.horizontal-scroller {
+    /* ... other styles ... */
+    animation: scrollLeft 15s linear infinite;
+}
+
+/* Pause the animation when hovering over a scroll item */
+.scroll-item:hover {
+    animation-play-state: paused;
+}
+
+/* Ensure the animation also pauses when hovering over any part of the scroller */
+.horizontal-scroller:hover {
+    animation-play-state: paused;
+}
+
+
+/* Card Styling */
+.card {
+    background-color: #fff; /* Background color of the card */
+    border: 1px solid #ddd; /* Border color */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow for depth */
+    width: 100%; /* Card width */
+    padding: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes space inside the card */
+    overflow: hidden; /* Prevents content from protruding outside */
+    height: 100%; /* Full height of scroll item */
+}
+
+.card-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center; /* Center align the header */
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 14px; /* Adjust for the best readability */
+    text-align: justify; /* Justifies the text for better readability */
+    overflow-y: auto; /* Enables scroll if content is too long */
+}
+
+/* Card Image Styling */
+.card-image {
+    width: 100%; /* Make the image fill the card's width */
+    height: auto; /* Maintain the image's aspect ratio */
+    display: block; /* Ensure the image is a block-level element */
+    margin: 0 auto; /* Center the image */
+    border-radius: 5px; /* Optional: Rounded corners to match the card's style */
+}
+
+/* Card Styling for Glassmorphism */
+.card {
+    background-color: rgba(255, 255, 255, 0.7); /* White background with transparency */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for depth */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 15px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px); /* Blur effect */
+}
+
+.card-header, .card-body {
+    color: #333; /* Adjust text color for better readability */
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-body {
+    font-size: 14px;
+    text-align: justify;
+}
+
+/* Static Label Styling */
+.static-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px; /* Adjust as needed */
+    top: 50%;
+    transform: translate(0, -50%) rotate(180deg);
+    z-index: 10;
+    border-radius: 5px;
+}
+
+#horizontal-scroller {
+    position: relative; /* For absolute positioning of the label */
+    padding-left: 60px; /* Space for the static label */
+}
+
+.horizontal-scroller {
+    overflow-x: auto;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1; /* Ensure scroller is below the static label */
+}
+
+.scroll-item {
+    display: inline-block;
+    /* Rest of your scroll item styles */
+}
+
+/* Ensure the rest of your card styles are unchanged */
+
+
+
+

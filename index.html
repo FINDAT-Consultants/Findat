@@ -350,7 +350,7 @@
                 <a href="https://www.Youtube.com/channel/UC2OKXIauaznE1F-6A7UCKLw" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://api.whatsapp.com/send/?phone=%2B260976913843" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p>&copy; 2023 FINDAT Consultants. All Rights Reserved.</p>
+            <p>&copy; <span id="currentYear"></span> FINDAT Consultants. All Rights Reserved.</p>
             <p>Unauthorized duplication or publication of any materials from this site is expressly prohibited.</p>
         </div>
     </footer>
@@ -616,6 +616,10 @@ $(document).ready(function() {
             alert("Incorrect password. Please get the password from the admin.");
         }
     }
+</script>
+
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
 
 

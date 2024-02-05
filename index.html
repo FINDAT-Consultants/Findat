@@ -623,6 +623,50 @@ $(document).ready(function() {
 </script>
 
 
+<script>
+    var manuBtn = document.getElementById('manuBtn');
+    var sideNav = document.getElementById('sideNav');
+    var menu = document.getElementById('menu');
+    sideNav.style.right = "-250px";
+
+    manuBtn.onclick = function() {
+        if (sideNav.style.right == "-250px") {
+            sideNav.style.right = "0";
+            menu.src = "images/close.png";
+        }
+        else {
+            sideNav.style.right = "-250px";
+            menu.src = "images/menu.png";
+        }
+    }
+
+    // Add event listeners to all links in sideNav
+    document.querySelectorAll('#sideNav a').forEach(link => {
+        link.addEventListener('click', function() {
+            // Close sideNav when any link is clicked
+            sideNav.style.right = "-250px";
+            menu.src = "images/menu.png"; // Change the menu icon back
+
+            // Smooth scroll to the section
+            // This relies on your existing smooth scroll functionality
+            var href = this.getAttribute('href');
+            document.querySelector(href).scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // Prevent the default anchor behavior
+            return false;
+        });
+    });
+
+    // Existing smooth scrolling js code for reference
+    var scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 1000,
+        speedAsDuration: true
+    });
+</script>
+
+
 </body>
 
 </html>

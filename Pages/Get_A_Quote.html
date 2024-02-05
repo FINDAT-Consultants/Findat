@@ -262,7 +262,7 @@ html, body {
             <a href="https://www.linkedin.com/company/92780932/admin/feed/posts/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             <!-- Add other social media links here -->
         </div>
-        <p>&copy; 2023 FINDAT Consultants. All Rights Reserved.</p>
+        <p>&copy; <span id="currentYear"></span> FINDAT Consultants. All Rights Reserved.</p>
     </div>
 </footer>
 
@@ -293,6 +293,9 @@ html, body {
     });
 </script>
 
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
     
 </body>
 </html>

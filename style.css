@@ -1464,3 +1464,39 @@ html, body {
         /* Additional adjustments as needed */
     }
 }
+
+
+/* Base card styles (for reference) */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Media query for devices with a max-width of 768px (for portrait orientation) */
+@media (max-width: 768px) {
+    .card {
+        /* Adjust card width and other properties as needed to fit the screen */
+        width: 100%; /* Makes card width responsive */
+        max-width: 280px; /* Reduces card width to fit mobile screens */
+        margin: 10px auto; /* Centers card within the viewport */
+        /* Additional adjustments */
+        font-size: 14px; /* Optional: Adjusts font size for readability */
+    }
+
+    /* Adjustments for card content to ensure it fits well */
+    .card-body {
+        padding: 15px; /* Adjust padding as needed for content fit */
+    }
+
+    .card-image {
+        height: auto; /* Maintain aspect ratio */
+        max-height: 180px; /* Optional: Adjust image height */
+    }
+}

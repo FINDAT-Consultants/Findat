@@ -1364,5 +1364,36 @@ ion-icon {
 /* Ensure the rest of your card styles are unchanged */
 
 
+.clients {
+    text-align: center; /* Ensures the "Our Clients" heading is centered */
+    flex: 1; /* Keep this to ensure the container takes appropriate space */
+    padding: 20px; /* Provides padding around the container */
+}
+
+.client-logos {
+    display: flex;
+    justify-content: center; /* Centers logos horizontally */
+    align-items: center; /* Align logos vertically in the center */
+    flex-wrap: nowrap; /* Prevents logos from wrapping to the next line */
+    overflow-x: auto; /* Allows horizontal scrolling if the container is too small */
+    padding: 20px 0; /* Adds padding above and below the logo container */
+}
+
+.client-logos img {
+    max-height: 200px; /* Controls the size of the logos, adjust as needed */
+    width: auto; /* Maintains the aspect ratio of the logos */
+    margin: 0 20px; /* Adds horizontal space between logos */
+    object-fit: contain; /* Ensures logos fit well within their dimensions */
+    filter: blackscale(100%); /* Makes logos black and white */
+    transition: filter 0.3s ease; /* Smooth transition for the filter */
+}
+
+.client-logos img:hover {
+    filter: blackscale(0); /* Reverts to original color on hover */
+}
 
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}

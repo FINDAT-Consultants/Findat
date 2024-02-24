@@ -1432,3 +1432,35 @@ html, body {
         font-size: 16px; /* Example font size adjustment */
     }
 }
+
+.horizontal-scroller {
+    display: flex;
+    overflow-x: auto; /* Allows horizontal scrolling */
+    overflow-y: hidden; /* Prevents vertical scrolling */
+    white-space: nowrap; /* Keeps items in a single row */
+    align-items: stretch; /* Adjust based on your design, 'stretch' can help ensure cards fully expand vertically */
+}
+
+.scroll-item {
+    display: inline-block; /* For horizontal scrolling */
+    width: 80%; /* Example width, adjust based on your design */
+    margin: 10px; /* Provides space between cards */
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Example styling */
+}
+
+.card {
+    width: 100%; /* Ensures card width is responsive within its container */
+    height: auto; /* Allows height to adjust based on content */
+    overflow: hidden; /* Keeps content within the card */
+}
+
+@media (orientation: portrait) {
+    /* Adjust card sizes and spacing for portrait mode */
+    .scroll-item {
+        width: 90%; /* Allows more space for each card */
+    }
+
+    .card {
+        /* Additional adjustments as needed */
+    }
+}

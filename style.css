@@ -1397,3 +1397,38 @@ html, body {
     max-width: 100%;
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
+
+
+.card {
+    width: 100%; /* Allows card to fill the container */
+    max-width: 320px; /* Maximum card width, adjust as needed */
+    margin: auto; /* Center card in its container */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Example shadow for aesthetics */
+    overflow: hidden; /* Ensures content does not overflow the card */
+}
+
+.card-image {
+    width: 100%; /* Ensures images are responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.card-body {
+    padding: 15px; /* Padding inside the card */
+    text-align: center; /* Centering text, adjust as per design */
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        max-width: none; /* Allows card to expand fully on smaller screens */
+    }
+
+    .card-body {
+        padding: 10px; /* Adjust padding for smaller screens if needed */
+    }
+
+    /* Adjust font sizes or other styles as necessary */
+    .card-header, .card-body p {
+        font-size: 16px; /* Example font size adjustment */
+    }
+}

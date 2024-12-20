@@ -10,7 +10,281 @@
     <title> FINDAT Consultants - Home</title>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <link rel="icon" type="image/png" href="Favicon/favicon-32x32.png" sizes="400x400">
-    
+    <style>
+    .logo-image {
+    width: 200px; /* Adjust this value as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+.header-top-list {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Add spacing between items */
+}
+
+.header-top-item {
+    font-size: 0.9em; /* Adjust this value as needed */
+}
+
+.item-title, .item-text, .item-link {
+    font-size: 0.8em; /* Adjust this value as needed */
+}
+
+#sideNav {
+    padding-top: 40px; /* Increase top padding to create space between the header bar and navigation */
+}
+
+#sideNav nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sideNav nav ul li {
+    font-size: 0.8em; /* Compact font size */
+    padding: 8px 0; /* Slight vertical padding for readability */
+    margin: 0;
+    line-height: 1.4; /* Adjust line-height for readability */
+    display: flex;
+    align-items: center;
+}
+
+#sideNav nav ul li a {
+    color: #faf0f0;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+#sideNav nav ul li a:hover {
+    color: #FF5733; /* Highlight color on hover */
+}
+
+#sideNav nav ul li i {
+    margin-right: 8px; /* Space between icon and text */
+    color: #fef8f8; /* Icon color */
+}
+
+/* General Section Style */
+#developments {
+    padding: 10px; /* Further reduced padding around the section */
+    background-color: #f5f5f5;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px; /* Space between sections */
+}
+
+/* Main Heading Border */
+#developments h2 {
+    font-size: 0.9em; /* Smaller size for main heading */
+    text-align: left;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #FF5733;
+    color: #333;
+}
+
+/* Intro Text Styling */
+.intro-text {
+    font-size: 0.75em; /* Slightly smaller font size for intro text */
+    color: #666;
+    margin: 5px 0 12px 0; /* Reduced margin to save space */
+    line-height: 1.3;
+}
+
+/* Zebra Animation Base */
+.zebra-animated, .zebra-animated-opposite {
+    position: relative;
+    overflow: hidden;
+    color: transparent;
+    animation: textReveal 1s forwards 0.5s;
+}
+
+.zebra-animated::before, .zebra-animated-opposite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 300%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #333,
+        #333 8px,
+        #f5f5f5 8px,
+        #f5f5f5 16px
+    );
+}
+
+/* Left to Right Animation */
+.zebra-animated::before {
+    left: -100%;
+    animation: zebraSplash 0.7s ease-out forwards;
+}
+
+/* Right to Left Animation */
+.zebra-animated-opposite::before {
+    right: -100%;
+    animation: zebraSplashReverse 0.7s ease-out forwards;
+}
+
+/* Text Reveal Animation */
+@keyframes textReveal {
+    to {
+        color: #333;
+    }
+}
+
+@keyframes zebraSplash {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes zebraSplashReverse {
+    to {
+        right: 100%;
+    }
+}
+
+/* Development Item Styling */
+.development-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px; /* Further reduced padding */
+    margin-bottom: 8px; /* Minimal margin for compactness */
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease;
+}
+
+.development-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.development-item h3 {
+    font-size: 0.85em; /* Reduced font size for headers */
+    color: #333;
+    margin: 0 0 3px;
+    font-weight: bold;
+    border-bottom: 1px solid #FF5733;
+    padding-bottom: 2px;
+}
+
+.development-item p {
+    font-size: 0.7em; /* Slightly smaller font size for descriptions */
+    color: #555;
+    margin: 4px 0 0 0;
+    line-height: 1.2; /* Reduced line-height for compactness */
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+    color: #ffffff;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.logo-image {
+    transition: opacity 1s ease-in-out; /* Smooth fade transition */
+}
+
+.logo-image {
+    width: 250px; /* Set to the desired width */
+    height: 100px; /* Set to the desired height */
+    object-fit: cover; /* Ensure image fills the area without distortion */
+    transition: opacity 1s ease-in-out;
+}
+
+.client-logos-container {
+    display: flex;
+    justify-content: center; /* Centers the logos horizontally */
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.client-logos {
+    display: flex;
+    justify-content: center; /* Ensures logos are centered within the container */
+    align-items: center;
+    gap: 10px; /* Adjust gap between logos if needed */
+}
+
+.client-logos img {
+    width: 100px; /* Reduce size of each logo */
+    height: auto;
+    flex-shrink: 0;
+    margin: 0 10px; /* Add margin to space out logos */
+}
+
+.banner-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between the buttons */
+    margin-top: 80px; /* Add space between the buttons and the text above */
+}
+
+.read-more-btn,
+.shop-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF5733;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.read-more-btn:hover,
+.shop-button:hover {
+    background-color: #FF4519;
+}
+
+.read-more-btn span,
+.shop-button span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: -100%;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover span,
+.shop-button:hover span {
+    left: 100%;
+}
+
+
+#feature {
+    margin-top: 20px; /* Adds space between Research and Development and Features */
+}
+
+.client-logos img {
+    width: 100px; /* Set the logo size */
+    height: auto;
+    flex-shrink: 0;
+    margin: 0 10px;
+    filter: brightness(0.3) contrast(1.2); /* Darken logos with some contrast */
+    transition: filter 0.3s ease; /* Smooth transition on hover */
+}
+
+.client-logos img:hover {
+    filter: none; /* Restore original colors on hover */
+}
+
+
+    </style>
 </head>
 </head>
 
@@ -24,7 +298,9 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-content">
-                    <img src="images/LOGO.png" alt="Logo" class="logo-image">
+                    <img src="images/LOGO Maker.png" alt="Logo" class="logo-image" id="logoSlideshow" style="width: 250px; height: auto;">
+
+
                     <ul class="header-top-list">
                         <li class="header-top-item">
                             <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
@@ -66,39 +342,32 @@
              <div class="banner-text">
             <h2>The only place</h2>
             <p>Where you can get it done</p>
-            <div class="banner-btn">
+            <div class="banner-btn-container">
                 <a href="#" class="read-more-btn" onclick="toggleMoreInfo()"><span></span> Read More</a>
+                <a href="Pages/Shop.html" class="shop-button"><span></span> Visit Our Shop</a>
             </div>
+            
+        </div>
             
         </div>
         </div>
 
 
-<section id="horizontal-scroller">
-            <div class="static-ribbon">
-                <span class="static-label">Developments</span>
-            <div class="horizontal-scroller">
-                <!-- Card 1 -->
-                <div class="scroll-item">
-                    <div class="card">
-                        <div class="card-header">Klox</div>
-                        <img src="images/Clock.png" alt="Description of Image" class="card-image">
-                        <div class="card-body">
-                            <p>A Time tracking App that operates in real-time and monitors the check-in and check-out of personnel. This Application is being developed</p>
-                        </div>
-                    </div>
+        <section id="developments">
+            <div class="developments-header">
+                <h2 class="zebra-animated">Research and Developments</h2>
+                <p class="intro-text zebra-animated">The Forensic Institute of Data and Technology Consultants undertakes various research projects and has developed innovative solutions in the fields of FinTech and personnel management. These include:</p>
+            </div>
+            <div class="developments-labels">
+                <div class="development-item zebra-animated-opposite">
+                    <h3>ProATR</h3>
+                    <p>A pro-artificial transaction reconciliator that enhances operational speed in the bank reconciliation process via automation of repetitive tasks using AI.</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="scroll-item">
-                    <div class="card">
-                        <div class="card-header">Ri-Ko</div>
-                        <img src="images/Riko.png" alt="Description of Image" class="card-image">
-                        <div class="card-body">
-                            <p>An Automated Bank Reconciliation development underway</p>
-                        </div>
-                    </div>
+                <div class="development-item zebra-animated-opposite">
+                    <h3>KLOX</h3>
+                    <p>A Time tracking app that operates in real-time, monitoring the check-in and check-out of personnel.</p>
                 </div>
-                <!-- Additional cards as needed -->
+                <!-- Add more development items as needed -->
             </div>
         </section>
         
@@ -109,23 +378,22 @@
     <div id="sideNav">
         <nav>
             <ul>
-                <li><a href="#banner">HOME</a></li>
-                <li><a href="#feature">FEATURES</a></li>
-                <li><a href="#service">CONSULTANCY SERVICES</a></li>
+                <li><a href="#banner"><i class="fa fa-home"></i> HOME</a></li>
+                <li><a href="#feature"><i class="fa fa-star"></i> FEATURES</a></li>
+                <li><a href="#service"><i class="fa fa-briefcase"></i> CONSULTANCY SERVICES</a></li>
                 <li class="dropdown">
-                    <a href="#">EDUCATIONAL SERVICES <i class="fa fa-caret-down"></i></a>
+                    <a href="#"><i class="fa fa-graduation-cap"></i> EDUCATIONAL SERVICES <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-content">
-                        <li><a href="#testimonial">Courses</a></li>
-                        <li><a href="https://meet.google.com/hgy-wnnn-nej" target="_blank">Online - Classes</a></li> <!-- Replace YOUR_GOOGLE_MEET_LINK_HERE with the actual Google Meet link -->
-                        <li><a href="#" class="online-Exams" onclick="openOnlineExams()">Online - Exams</a></li>
-
-                        <li><a href="#" class="open-registration">Registration</a></li>
-                        
+                        <li><a href="#testimonial"><i class="fa fa-book"></i> Courses</a></li>
+                        <li><a href="https://meet.google.com/hgy-wnnn-nej" target="_blank"><i class="fa fa-video"></i> Online - Classes</a></li>
+                        <li><a href="#" class="online-Exams" onclick="openOnlineExams()"><i class="fa fa-pencil-alt"></i> Online - Exams</a></li>
+                        <li><a href="#" class="open-registration"><i class="fa fa-clipboard"></i> Registration</a></li>
                     </ul>
-                <li><a href="Pages/tutors.html">OUR TEAM</a></li>
-                <li><a href="Pages/Get_A_Quote.html">GET A QUOTE</a></li>
-                <li><a href="Pages/Payments.html">PAYMENT</a></li>
-                
+                </li>
+                <li><a href="Pages/tutors.html"><i class="fa fa-users"></i> OUR TEAM</a></li>
+                <li><a href="#clients"><i class="fa fa-handshake"></i> OUR CLIENTS</a></li>
+                <li><a href="Pages/Get_A_Quote.html"><i class="fa fa-file-invoice"></i> GET A QUOTE</a></li>
+                <li><a href="Pages/Payments.html"><i class="fa fa-credit-card"></i> PAYMENT</a></li>
             </ul>
         </nav>
     </div>
@@ -207,21 +475,25 @@
 
 
             <!-- Clients Section Right Side -->
-        <div class="clients">
-            <h2>Our Clients</h2>
-            <div class="client-logos">
-                <img src="images/bu.png" alt="Client Logo 1">
-                
-                <!-- Add more client logos as needed -->
+            <section id="clients">
+                <h2>Our Clients</h2>
+                <div class="client-logos-container">
+                    <div class="client-logos">
+                        <img src="images/bu.png" alt="Client Logo 1">
+                        <img src="images/wise.png" alt="Client Logo 2">
+                        <img src="images/ADRA.png" alt="Client Logo 3">
+                        <img src="images/cz.png" alt="Client Logo 4">
+                        <img src="images/ru.png" alt="Client Logo 5">
+                        <img src="images/mu.png" alt="Client Logo 6">
+                        <!-- Add more client logos as needed -->
+                    </section>
+                </div>
             </div>
+            
 
 
         
 
-            <!-- Shop Link (Moved to the right) -->
-<div class="shop-link">
-    <a href="Pages/Shop.html" class="shop-button underlined">Visit our Shop</a>
-</div>
 
 
         </div>
@@ -672,6 +944,37 @@ $(document).ready(function() {
         speedAsDuration: true
     });
 </script>
+
+<script>
+    // Array of logo image paths
+    const logoImages = [
+        'images/LOGO Maker.png',
+        'images/Shot.png',
+        ];
+
+let currentIndex = 0;
+const logoElement = document.getElementById('logoSlideshow');
+
+function changeLogo() {
+    // Fade out the logo
+    logoElement.style.opacity = 0;
+
+    // After the fade-out effect, change the image and fade in
+    setTimeout(() => {
+        currentIndex = (currentIndex + 1) % logoImages.length;
+        logoElement.src = logoImages[currentIndex];
+
+        // Fade in the new logo
+        logoElement.style.opacity = 1;
+    }, 500); // Half of the transition time for smoothness
+}
+
+// Change logo every 3 seconds (3000 ms) with smooth transitions
+setInterval(changeLogo, 3000);
+</script>
+
+
+
 
 
 </body>

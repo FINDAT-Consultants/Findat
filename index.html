@@ -1,892 +1,619 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>FINDAT Consultants - Home</title>
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <link rel="icon" type="image/png" href="Favicon/favicon-32x32.png" sizes="400x400">
-    <!-- Optional: jQuery because you referenced $() in one script -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
+  <title>FINDAT™ | Consultants</title>
 
-    <style>
-        .logo-image {
-            width: 200px;
-            height: auto;
-        }
+  <!-- Security (CSP updated to allow Chatbase) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: blob:;
+                 img-src 'self' data: blob: https:;
+                 media-src https: data: blob:;
+                 style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+                 font-src  'self' https://cdnjs.cloudflare.com;
+                 script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com https://www.chatbase.co;
+                 connect-src 'self' https://api.whatsapp.com https://meet.google.com https://www.chatbase.co;
+                 frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.chatbase.co;">
+  <meta name="theme-color" content="#111318" />
+  <meta name="description" content="FINDAT™ — forensic analytics, risk advisory, automation, and professional training." />
 
-        .header-top-list {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+  <!-- Icons / fonts -->
+  <link rel="icon" type="image/png" href="Favicon/favicon-32x32.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        .header-top-item {
-            font-size: 0.9em;
-        }
+  <!-- Smooth Scroll -->
+  <script defer src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
-        .item-title,
-        .item-text,
-        .item-link {
-            font-size: 0.8em;
-        }
+  <!-- ===== PwC-inspired theme ===== -->
+  <style>
+    :root{
+      /* Corporate neutrals + warm accent (NOT PwC brand marks) */
+      --bg:#111318; --surface:#171a20; --card:#1b1f27; --muted:#9aa3b2;
+      --text:#f0f3f8; --title:#ffffff; --line:#262c36;
+      --accent:#ff6a2b;        /* warm orange */
+      --accent-2:#ffb320;      /* amber */
+      --accent-3:#d64b52;      /* warm red */
+      --accent-4:#f08e43;      /* orange-tan */
+      --link:#9bc1ff;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+    a{color:var(--link);text-decoration:none}
+    a:hover{opacity:.9}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-        #sideNav {
-            padding-top: 40px;
-        }
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:1000;background:rgba(17,19,24,.86);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:32px;width:auto}
+    .brand .wordmark{font-weight:800;letter-spacing:.3px;color:var(--title)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--text);font-weight:600}
+    .nav-cta{display:flex;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);color:var(--text);background:transparent}
+    .btn-primary{border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#111318;font-weight:800}
+    .btn:hover{transform:translateY(-1px)}
+    .menu-toggle{display:none}
 
-        #sideNav nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+    /* Hero (clean corporate with search) */
+    .hero{background:
+      radial-gradient(1000px 500px at 10% 10%, rgba(255,106,43,.12), transparent 60%),
+      radial-gradient(800px 400px at 85% 20%, rgba(255,179,32,.12), transparent 60%),
+      var(--surface);
+      border-bottom:1px solid var(--line)}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:64px 0}
+    .eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:800;font-size:.78rem}
+    .hero h1{font-size:clamp(2rem,3.6vw,3rem);line-height:1.1;margin:.35em 0 .35em}
+    .hero p{color:#cfd6e4;max-width:620px}
+    .searchbar{margin-top:24px;display:flex;gap:10px}
+    .searchbar input{flex:1;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#0f1217;color:var(--text)}
+    .searchbar button{padding:12px 16px;border-radius:12px;border:0;background:var(--accent);color:#111;font-weight:800}
+    .hero-visual{position:relative}
+    .stack-bars{position:absolute;left:-12px;top:-12px;display:flex;gap:6px}
+    .stack-bars span{width:14px;height:54px;border-radius:6px}
+    .stack-bars .b1{background:var(--accent)}
+    .stack-bars .b2{background:var(--accent-2)}
+    .stack-bars .b3{background:var(--accent-3)}
+    .stack-bars .b4{background:var(--accent-4)}
+    .hero-card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,#1b2028,#151a22);box-shadow:var(--shadow);padding:18px}
+    .hero-card img{width:100%;border-radius:10px}
 
-        #sideNav nav ul li {
-            font-size: 0.8em;
-            padding: 8px 0;
-            margin: 0;
-            line-height: 1.4;
-            display: flex;
-            align-items: center;
-        }
+    /* Topic tiles (PwC-like grid) */
+    .tiles{padding:34px 0;border-bottom:1px solid var(--line);background:var(--surface)}
+    .tiles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .tile{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+    .tile img{width:100%;height:140px;object-fit:cover;display:block;filter:brightness(.9)}
+    .tile .tcap{padding:12px;font-weight:700}
+    .tile .tag{position:absolute;left:10px;top:10px;font-size:.72rem;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,.55);border:1px solid var(--line)}
+    .tile:hover img{transform:scale(1.03);transition:.3s}
 
-        #sideNav nav ul li a {
-            color: #faf0f0;
-            text-decoration: none;
-            padding-left: 10px;
-        }
+    /* Insights */
+    .section{padding:44px 0}
+    .section h2{font-size:1.6rem;margin:0 0 16px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+    .card iframe,.card img{width:100%;aspect-ratio:16/9;border:0;display:block}
+    .card .body{padding:12px}
+    .card small{color:var(--muted)}
+    .card h3{margin:6px 0 6px;font-size:1.02rem}
 
-        #sideNav nav ul li a:hover {
-            color: #FF5733;
-        }
+    /* Services / Industries (two grids) */
+    .grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#0f1217;border:1px solid var(--line);font-size:.78rem;color:#cfd6e4}
 
-        #sideNav nav ul li i {
-            margin-right: 8px;
-            color: #fef8f8;
-        }
+    /* R&D accordion */
+    .panel{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:16px}
+    .acc-item{border:1px solid var(--line);border-radius:10px;background:#141820;margin:10px 0}
+    .acc-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font-weight:800;cursor:pointer}
+    .acc-marker{width:28px;height:28px;border-radius:8px;border:1px solid var(--accent);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;background:transparent}
+    .acc-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .3s ease, opacity .25s ease}
+    .acc-content.open{opacity:1}
+    .acc-content-inner{padding:12px 14px;color:#cfd6e4}
 
-        /* General Section Style */
-        #developments {
-            padding: 10px;
-            background-color: #f5f5f5;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
+    /* Footer */
+    .footer{border-top:1px solid var(--line);background:#0e1014}
+    .foot-wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;padding:32px 0}
+    .foot h4{margin:0 0 12px}
+    .foot ul{list-style:none;margin:0;padding:0}
+    .foot li{margin:6px 0}
+    .foot a{color:#d6def0}
+    .foot .brandline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .brandline .bars{display:flex;gap:6px}
+    .bars span{width:10px;height:40px;border-radius:5px}
+    .bars .b1{background:var(--accent)}
+    .bars .b2{background:var(--accent-2)}
+    .bars .b3{background:var(--accent-3)}
+    .bars .b4{background:var(--accent-4)}
+    .copyright{border-top:1px solid var(--line);padding:12px 0;color:#a9b4c6;font-size:.9rem;text-align:center}
 
-        /* Main Heading Border */
-        #developments h2 {
-            font-size: 0.9em;
-            text-align: left;
-            margin-bottom: 8px;
-            padding-bottom: 3px;
-            border-bottom: 2px solid #FF5733;
-            color: #333;
-        }
-
-        /* Intro Text Styling */
-        .intro-text {
-            font-size: 0.75em;
-            color: #666;
-            margin: 5px 0 12px 0;
-            line-height: 1.3;
-        }
-
-        /* Zebra Animation Base */
-        .zebra-animated,
-        .zebra-animated-opposite {
-            position: relative;
-            overflow: hidden;
-            color: transparent;
-            animation: textReveal 1s forwards 0.5s;
-        }
-
-        .zebra-animated::before,
-        .zebra-animated-opposite::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 300%;
-            height: 100%;
-            background: repeating-linear-gradient(45deg,
-                    #333,
-                    #333 8px,
-                    #f5f5f5 8px,
-                    #f5f5f5 16px);
-        }
-
-        /* Left to Right Animation */
-        .zebra-animated::before {
-            left: -100%;
-            animation: zebraSplash 0.7s ease-out forwards;
-        }
-
-        /* Right to Left Animation */
-        .zebra-animated-opposite::before {
-            right: -100%;
-            animation: zebraSplashReverse 0.7s ease-out forwards;
-        }
-
-        /* Text Reveal Animation */
-        @keyframes textReveal {
-            to {
-                color: #333;
-            }
-        }
-
-        @keyframes zebraSplash {
-            to {
-                left: 100%;
-            }
-        }
-
-        @keyframes zebraSplashReverse {
-            to {
-                right: 100%;
-            }
-        }
-
-        /* Development Item Styling */
-        .development-item {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 6px;
-            margin-bottom: 8px;
-            background-color: #ffffff;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .development-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .development-item h3 {
-            font-size: 0.85em;
-            color: #333;
-            margin: 0 0 3px;
-            font-weight: bold;
-            border-bottom: 1px solid #FF5733;
-            padding-bottom: 2px;
-        }
-
-        .development-item p {
-            font-size: 0.7em;
-            color: #555;
-            margin: 4px 0 0 0;
-            line-height: 1.2;
-        }
-
-        .modal-content {
-            background: rgba(0, 0, 0, 0.6);
-            color: #ffffff;
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 500px;
-            margin: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo-image {
-            transition: opacity 1s ease-in-out;
-            width: 250px;
-            height: 100px;
-            object-fit: cover;
-        }
-
-        .client-logos-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .client-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .client-logos img {
-            width: 100px;
-            height: auto;
-            flex-shrink: 0;
-            margin: 0 10px;
-            filter: brightness(0.3) contrast(1.2);
-            transition: filter 0.3s ease;
-        }
-
-        .client-logos img:hover {
-            filter: none;
-        }
-
-        .banner-btn-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 80px;
-        }
-
-        .read-more-btn,
-        .shop-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #FF5733;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .read-more-btn:hover,
-        .shop-button:hover {
-            background-color: #FF4519;
-        }
-
-        .read-more-btn span,
-        .shop-button span {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            top: 0;
-            left: -100%;
-            transition: all 0.3s ease;
-        }
-
-        .read-more-btn:hover span,
-        .shop-button:hover span {
-            left: 100%;
-        }
-
-        #feature {
-            margin-top: 20px;
-        }
-    </style>
+    /* Responsive */
+    @media (max-width:1024px){
+      .hero-wrap{grid-template-columns:1fr;gap:22px}
+      .tiles-grid{grid-template-columns:repeat(2,1fr)}
+      .cards,.grid-6{grid-template-columns:repeat(2,1fr)}
+      .foot-wrap{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .nav-links{display:none}
+      .menu-toggle{display:inline-flex;border:1px solid var(--line);padding:8px 10px;border-radius:10px;background:#12151b;color:var(--text)}
+      .tiles-grid{grid-template-columns:1fr}
+      .cards,.grid-6{grid-template-columns:1fr}
+      .foot-wrap{grid-template-columns:1fr}
+      .searchbar{flex-direction:column}
+    }
+  </style>
 </head>
 
-<body class="no-scrollbar">
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <img src="images/Log10.png" alt="FINDAT logo">
+        <span class="wordmark">FINDAT™ Consultants</span>
+      </div>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+      <nav class="nav-links" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#insights">Insights</a>
+        <a href="school.html">Executive & Professional Training</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <header class="header">
-        <div class="header-top">
-            <div class="container">
-                <div class="header-content">
-                    <img src="images/LOGO Maker.png" alt="Logo" class="logo-image" id="logoSlideshow">
-
-                    <ul class="header-top-list">
-                        <li class="header-top-item">
-                            <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
-                            <p class="item-title"><strong style="color: rgb(239, 149, 3);">Call Us :</strong></p>
-                            <a href="tel:01234567895" class="item-link">+260 976 913 843</a>
-                        </li>
-                        <li class="header-top-item">
-                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                            <p class="item-text">
-                                <strong style="color: rgb(22, 215, 93);">
-                                    Operating Days: Monday - Friday, 08 am - 09 pm
-                                </strong>
-                            </p>
-                        </li>
-
-                        <li class="header-top-item">
-                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                            <p class="item-title"><strong style="color: #FF5733;">Status :</strong></p>
-                            <p class="item-text" id="opening-status" class="status">Checking...</p>
-                            <div id="manuBtn">
-                                <img src="images/menu.png" alt="" id="menu">
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div id="preloader"></div>
-
-    <section id="banner">
-        <div class="ribbon">
-            <div class="banner-text">
-                <h2>The only place</h2>
-                <p>Where you can get it done</p>
-                <div class="banner-btn-container">
-                    <a href="#" class="read-more-btn" onclick="toggleMoreInfo()"><span></span> Read More</a>
-                    <a href="Pages/Shop.html" class="shop-button"><span></span> Visit Our Shop</a>
-                </div>
-            </div>
-        </div>
-
-        <section id="developments">
-            <div class="developments-header">
-                <h2 class="zebra-animated">Research and Developments</h2>
-                <p class="intro-text zebra-animated">
-                    The Forensic Institute of Data and Technology Consultants undertakes various research projects and
-                    has developed innovative solutions in the fields of FinTech and personnel management. These include:
-                </p>
-            </div>
-            <div class="developments-labels">
-                <div class="development-item zebra-animated-opposite">
-                    <h3>ProATR</h3>
-                    <p>
-                        A pro-artificial transaction reconciliator that enhances operational speed in the bank
-                        reconciliation process via automation of repetitive tasks using AI.
-                    </p>
-                </div>
-                <div class="development-item zebra-animated-opposite">
-                    <h3>KLOX</h3>
-                    <p>A Time tracking app that operates in real-time, monitoring the check-in and check-out of personnel.</p>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <div id="sideNav">
-        <nav>
-            <ul>
-                <li><a href="#banner"><i class="fa fa-home"></i> HOME</a></li>
-                <li><a href="#feature"><i class="fa fa-star"></i> FEATURES</a></li>
-                <li><a href="#service"><i class="fa fa-briefcase"></i> CONSULTANCY SERVICES</a></li>
-                <li class="dropdown">
-                    <a href="#"><i class="fa fa-graduation-cap"></i> EDUCATIONAL SERVICES <i class="fa fa-caret-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a href="#testimonial"><i class="fa fa-book"></i> Courses</a></li>
-                        <li><a href="https://meet.google.com/hgy-wnnn-nej" target="_blank"><i class="fa fa-video"></i> Online - Classes</a></li>
-                        <li><a href="#" class="online-Exams" onclick="openOnlineExams()"><i class="fa fa-pencil-alt"></i> Online - Exams</a></li>
-                        <li><a href="#" class="open-registration"><i class="fa fa-clipboard"></i> Registration</a></li>
-                    </ul>
-                </li>
-                <li><a href="Pages/tutors.html"><i class="fa fa-users"></i> OUR TEAM</a></li>
-                <li><a href="#clients"><i class="fa fa-handshake"></i> OUR CLIENTS</a></li>
-                <li><a href="Pages/Get_A_Quote.html"><i class="fa fa-file-invoice"></i> GET A QUOTE</a></li>
-                <li><a href="Pages/Payments.html"><i class="fa fa-credit-card"></i> PAYMENT</a></li>
-            </ul>
-        </nav>
+      <div class="nav-cta">
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <a href="#" class="btn" id="openLogin"><i class="far fa-user"></i> Log in</a>
+        <a href="#" class="btn-primary" id="openSignup"><i class="fas fa-user-plus"></i> Sign up</a>
+      </div>
     </div>
+  </header>
 
-    <!-- Registration Form Modal -->
-    <div id="registration-form" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form action="https://script.google.com/macros/s/AKfycbxT4CUKy57upd-d3kWysBEdzOVbwgCfpeizTWWE49WKTN74Z_y2GOwPgK2KiBZ9j27_5w/exec"
-                  method="post" name="registration-form" id="registrationForm">
-                <h2>Course Registration</h2>
-                <input type="date" name="date" placeholder="Registration Date" required>
-                <input type="text" name="firstName" placeholder="First Name" required>
-                <input type="text" name="lastName" placeholder="Last Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="phoneNumber" placeholder="Phone Number" required>
-                <input type="text" name="location" placeholder="Location" required>
-
-                <fieldset>
-                    <legend>Select your course of interest:</legend>
-                    <label><input type="checkbox" name="msexcel" value="✔"> MS Excel</label>
-                    <label><input type="checkbox" name="sql" value="✔"> SQL</label>
-                    <label><input type="checkbox" name="mspowerbi" value="✔"> MS Power Bi</label>
-                    <label><input type="checkbox" name="tableau" value="✔"> Tableau</label>
-                </fieldset>
-
-                <input type="submit" value="Submit" id="submit">
-            </form>
-
-            <div id="formResponse"></div>
-        </div>
+  <!-- Mobile quick menu (simple) -->
+  <div id="mobileMenu" style="display:none;border-bottom:1px solid var(--line);background:#12161d">
+    <div class="container" style="padding:10px 20px;display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#insights">Insights</a>
+      <a href="school.html">Executive & Professional Training</a>
+      <a href="#contact">Contact</a>
     </div>
+  </div>
 
-    <div id="manuBtn">
-        <img src="images/menu.png" alt="" id="menu">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="eyebrow">Advisory • Analytics • Automation</div>
+        <h1>Precision advice for modern organizations.</h1>
+        <p>We help leaders reduce risk, accelerate reconciliations, and build data-driven capabilities. Engage FINDAT™ for forensic analytics, process automation, and professional training.</p>
+        <form class="searchbar" onsubmit="event.preventDefault();executeSearch()">
+          <input id="siteSearch" type="search" placeholder="Search topics, services, or insights…" autocomplete="off" />
+          <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+        <div style="margin-top:14px">
+          <span class="pill">Africa-first</span>
+          <span class="pill">Forensic analytics</span>
+          <span class="pill">Process automation</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="stack-bars" aria-hidden="true">
+          <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
+        </div>
+        <div class="hero-card">
+          <img src="images/Consult.png" alt="Leaders reviewing dashboards">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Features Section -->
-    <section id="feature">
-        <div class="title-text">
-            <p>FEATURES</p>
-            <h1>Why Choose Us</h1>
-        </div>
-        <div class="feature-box">
-            <div class="features">
-                <h1>Experienced Staff</h1>
-                <div class="features-desc">
-                    <div class="feature-icon">
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <div class="feature-text">
-                        <p>Our team comprises seasoned professionals with extensive experience in finance, data analysis, and technology. Their wealth of knowledge ensures that our consultancy services are not just theoretical but grounded in real-world business practices.</p>
-                    </div>
-                </div>
-                <h1>Pre Booking Via Calls</h1>
-                <div class="features-desc">
-                    <div class="feature-icon">
-                        <i class="fa fa-phone"></i>
-                    </div>
-                    <div class="feature-text">
-                        <p>We believe in a personal touch. You can pre-book your consultations via direct calls, allowing us to better understand your needs and tailor our services accordingly.</p>
-                    </div>
-                </div>
-                <h1>Affordable Cost</h1>
-                <div class="features-desc">
-                    <div class="feature-icon">
-                        <i class="fa fa-dollar"></i>
-                    </div>
-                    <div class="feature-text">
-                        <p>We believe in providing top-notch consultancy services at a cost that is accessible to a wide range of clients, from startups to established enterprises.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- Topic tiles -->
+  <section class="tiles" id="topics">
+    <div class="container">
+      <div class="tiles-grid">
+        <a class="tile" href="#insights">
+          <img src="images/Fraud.jpg" alt="">
+          <span class="tag">Insight</span>
+          <div class="tcap">Cyber fraud & AI scams</div>
+        </a>
+        <a class="tile" href="#services">
+          <img src="images/handshake.jpeg">
+          <span class="tag">Service</span>
+          <div class="tcap">Business Advisory & Automation</div>
+        </a>
+        <a class="tile" href="#industries">
+          <img src="images/city.jpg" alt="">
+          <span class="tag">Industry</span>
+          <div class="tcap">Broad Coverage</div>
+        </a>
+        <a class="tile" href="#rnd">
+          <img src="images/developments.jpg" alt="">
+          <span class="tag">R&D</span>
+          <div class="tcap">Upcoming Developments</div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-            <!-- Clients Section Right Side -->
-            <section id="clients">
-                <h2>Our Clients</h2>
-                <div class="client-logos-container">
-                    <div class="client-logos">
-                        <img src="images/bu.png" alt="Client Logo 1">
-                        <img src="images/wise.png" alt="Client Logo 2">
-                        <img src="images/ADRA.png" alt="Client Logo 3">
-                        <img src="images/cz.png" alt="Client Logo 4">
-                        <img src="images/ru.png" alt="Client Logo 5">
-                        <img src="images/mu.png" alt="Client Logo 6">
-                    </div>
-                </div>
-            </section>
-        </div>
-    </section>
+  <!-- Insights -->
+  <section class="section" id="insights">
+    <div class="container">
+      <h2>Latest insights</h2>
+      <div class="cards">
+        <article class="card">
+          <iframe src="https://www.youtube-nocookie.com/embed/_TwASHkFXoc?rel=0"
+                  title="WhatsApp Hacks & AI Scams" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="body">
+            <small>19 Jan 2025</small>
+            <h3>WhatsApp hacks & AI scams: protect yourself</h3>
+            <p class="muted">AI voice cloning and deepfakes are raising the stakes for social engineering.</p>
+          </div>
+        </article>
 
-    <!-- Service Section -->
-    <section id="service">
-        <div class="title-text">
-            <p>CONSULTANCY SERVICES</p>
-            <h1>We Provide Better</h1>
-        </div>
-        <div class="service-box">
-            <div class="single-service">
-                <img src="images/Pic-1.png">
-                <div class="overlay"></div>
-                <div class="service-desc">
-                    <h3>Data Visualization</h3>
-                    <hr>
-                    <p>High-quality and intuitive visuals for swift insights.</p>
-                </div>
-            </div>
-            <div class="single-service">
-                <img src="images/pic-2.jpg">
-                <div class="overlay"></div>
-                <div class="service-desc">
-                    <h3>Reporting</h3>
-                    <hr>
-                    <p>High-quality reporting services in Finance, HR, Sales & Marketing, Production and Health care, transforming complex data into actionable insights for strategic decision-making.</p>
-                </div>
-            </div>
-            <div class="single-service">
-                <img src="images/pic-3.jpg">
-                <div class="overlay"></div>
-                <div class="service-desc">
-                    <h3>Data Examination</h3>
-                    <hr>
-                    <p>Analyzing specific data sets to verify their accuracy, reliability and identify anomalies.</p>
-                </div>
-            </div>
-            <div class="single-service">
-                <img src="images/pic-4.jpg">
-                <div class="overlay"></div>
-                <div class="service-desc">
-                    <h3>Technological Development</h3>
-                    <hr>
-                    <p>Building intuitive websites and applications to automate and optimize business processes. However, we also provide A.I - (Artificial Intelligence) related services</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <article class="card">
+          <iframe src="https://www.youtube-nocookie.com/embed/qCVTG3_7TBU?rel=0" title="Internet Fraud Types"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  loading="lazy"></iframe>
+          <div class="body">
+            <small>27 Jan 2025</small>
+            <h3>Internet fraud: common patterns you should know</h3>
+            <p class="muted">From phishing to fake marketplaces: how to recognize the signals.</p>
+          </div>
+        </article>
 
-    <!-- Testimonial Section -->
-    <section id="testimonial">
-        <div class="background-gif-container">
-            <div class="background-gif"></div>
-        </div>
+        <article class="card">
+          <iframe src="https://www.youtube-nocookie.com/embed/19l5ZGxs4WY?rel=0" title="Analytics per domain"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  loading="lazy"></iframe>
+          <div class="body">
+            <small>15 Jan 2025</small>
+            <h3>How analytics work by domain</h3>
+            <p class="muted">What changes across finance, HR, supply chain, and public sector analytics.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <div class="title-text">
-            <p>EDUCATIONAL SERVICES</p>
-            <h1>Courses offered include:</h1>
-        </div>
-        <div class="testimonial-row">
-            <div class="testimonial-col">
-                <div class="user">
-                    <img src="images/img-1.png" alt="">
-                    <div class="user-info">
-                        <h4>MS Excel <i class="fa fa-twitter"></i></h4>
-                        <small>End - to - End Data Analytics</small>
-                    </div>
-                </div>
-                <p>
-                    This course aims to equip participants with the essential skills and knowledge required to become proficient data analysts using Microsoft Excel. Throughout this comprehensive program, you will delve into the world of data analytics, learning how to harness the power of Excel to clean, analyze, and visualize data effectively.
-                </p>
-            </div>
-            <div class="testimonial-col">
-                <div class="user">
-                    <img src="images/img-2.png" alt="">
-                    <div class="user-info">
-                        <h4>SQL <i class="fa fa-twitter"></i></h4>
-                        <small>Database - Management</small>
-                    </div>
-                </div>
-                <p>
-                    This comprehensive SQL course is designed to equip participants with a deep understanding and practical proficiency in managing relational databases using Structured Query Language (SQL).
-                    Our primary goal is to provide you with a solid foundation in SQL, starting from the basics of crafting queries and progressing to more advanced data manipulation techniques.
-                </p>
-            </div>
+  <!-- Services -->
+  <section class="section" id="services" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <h2>What we do</h2>
+      <div class="grid-6">
+        <div class="card"><img src="images/FIO.jpg" alt=""><div class="body"><h3>Forensic Analysis</h3><p>Detect fraud, revenue leaks, and anomalies using advanced data tests and intuitive dashboards.</p></div></div>
+        <div class="card"><img src="images/Digital Tools.jpg" alt=""><div class="body"><h3>Research & Knowlege Advisory</h3><p>Evidence-based briefs and management packs for finance, HR, sales, health, and public sector leaders.</p></div></div>
+        <div class="card"><img src="images/campaign.jpeg" alt=""><div class="body"><h3>Corporate Media and Voice Services</h3><p>Data-driven corporate storytelling, explainer media, and professional voice services for reports and campaigns.</p></div></div>
+        <div class="card"><img src="images/banner.png" alt=""><div class="body"><h3>Process Automation</h3><p>Lightweight apps, AI workflows, and reconciliation tools that remove manual bottlenecks.</p></div></div>
+        <div class="card"><img src="images/x.jpg" alt=""><div class="body"><h3>Risk Examination</h3><p>Independent reviews of controls, cyber and financial risk, and operational resilience frameworks.</p></div></div>
+        <div class="card"><img src="images/Meet.png" alt=""><div class="body"><h3>Management Advisory</h3><p>Board-level advisory, scenario modelling, and executive training on analytics, governance, and compliance.</p></div></div>
+      </div>
+    </div>
+  </section>
 
-            <div class="testimonial-col">
-                <div class="user">
-                    <img src="images/img-3.png" alt="">
-                    <div class="user-info">
-                        <h4>MS Power Bi<i class="fa fa-twitter"></i></h4>
-                        <small>Data Visualization</small>
-                    </div>
-                </div>
-                <p>
-                    This course aims to provide participants with a comprehensive understanding of Microsoft Power BI and equip them with the practical skills necessary to create compelling data visualizations and interactive dashboards.
-                </p>
+  <!-- Industries -->
+  <section class="section" id="industries">
+    <div class="container">
+      <h2>Industries</h2>
+      <div class="grid-6">
+        <div class="panel"><h3 style="margin:0 0 8px">NGOs & Development</h3><p class="muted">Grant compliance, M&E data, procurement integrity.</p></div>
+        <div class="panel"><h3 style="margin:0 0 8px">Education</h3><p class="muted">Admissions, fees, HR and student analytics.</p></div>
+        <div class="panel"><h3 style="margin:0 0 8px">Government & Public</h3><p class="muted">Revenue leakage, payroll, and program data.</p></div>
+        <div class="panel"><h3 style="margin:0 0 8px">Financial Services</h3><p class="muted">KYC/AML, reconciliations, fraud detection.</p></div>
+        <div class="panel"><h3 style="margin:0 0 8px">Agriculture</h3><p class="muted">Farm risk, supply chain, and inventory data.</p></div>
+        <div class="panel"><h3 style="margin:0 0 8px">Consumer & Industrial</h3><p class="muted">POS analytics, stock, and operations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research & Developments (accordion) -->
+  <section class="section" id="rnd">
+    <div class="container">
+      <h2>Lab Developments</h2>
+      <div class="panel">
+        <p class="muted" style="margin:0 0 10px">We prototype practical tools for reconciliation and workforce oversight.</p>
+
+        <div class="acc-item">
+          <div class="acc-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="proatr">
+            <span>ProATR</span>
+            <button class="acc-marker" type="button" aria-label="Expand ProATR" aria-controls="proatr">+</button>
+          </div>
+          <div id="proatr" class="acc-content" hidden>
+            <div class="acc-content-inner">
+              A pro-artificial transaction reconciliator that accelerates bank rec via heuristics & ML, flags anomalies, and exports audit-ready packs in minutes.
             </div>
+          </div>
         </div>
 
-        <!-- Read More Modal -->
-        <div id="readMoreModal" class="modal">
-            <div class="modal-content">
-                <h2>More Information</h2>
-                <h4>Our Vision:</h4>
-                <p>At FINDAT Consultants, we see a future where data is the catalyst for growth, innovation, and transformation across all industries. Our vision extends beyond providing data-driven solutions for organizations; we are committed to educating and empowering individuals from various fields with the skills to harness the power of data analytics.</p>
-
-                <h4>Our Mission:</h4>
-                <p>Our dual mission is to empower organizations by turning data into actionable insights and to educate a diverse range of professionals in the field of data analytics. We aim to bridge the gap between data and decision-making, making advanced analytics accessible to all.</p>
-
-                <h4>What We Do:</h4>
-                <p>Our firm specializes in providing data-driven business solutions, comprehensive educational programs in data analytics for professionals across various fields, leveraging financial expertise and the latest in AI and machine learning, and crafting customized strategies to meet the unique needs of businesses and individual learning goals.</p>
-
-                <h4>Our Approach:</h4>
-                <p>Our approach combines collaborative learning and partnerships, ethical data practices, and a commitment to continuous innovation, ensuring that both our clients and students benefit from tailored, transparent, and cutting-edge education in data analytics.</p>
-
-                <h4>Schedule a meeting with us and we will give you back insights with Precision and Innovation.</h4>
-                <p>You are just a call away from getting it done.</p>
+        <div class="acc-item">
+          <div class="acc-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="mts">
+            <span>MTS</span>
+            <button class="acc-marker" type="button" aria-label="Expand MTS" aria-controls="mts">+</button>
+          </div>
+          <div id="mts" class="acc-content" hidden>
+            <div class="acc-content-inner">
+              Real-time time-tracking: QR/NFC attendance, geofencing, shift alerts, and analytics to streamline payroll and productivity.
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.facebook.com//simonjohn.mwanza" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/findat_consultants/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/92780932/admin/feed/posts/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.Youtube.com/channel/UC2OKXIauaznE1F-6A7UCKLw" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://api.whatsapp.com/send/?phone=%2B260976913843" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p>&copy; <span id="currentYear"></span> FINDAT Consultants. All Rights Reserved.</p>
-            <p>Unauthorized duplication or publication of any materials from this site is expressly prohibited.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contact" style="background:linear-gradient(90deg,rgba(255,106,43,.12),rgba(255,179,32,.12));border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>
+        <h2 style="margin:.1em 0">Ready to talk?</h2>
+        <p class="muted" style="margin:0">Call us on <a href="tel:+260976913843">+260 976 913 843</a> or request a consultant.</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a href="#" class="btn" id="openLang"><i class="fas fa-globe-africa"></i> Language</a>
+        <a href="#" class="btn-primary open-consultant">Request consultant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container foot-wrap">
+      <div class="foot">
+        <div class="brandline">
+          <img src="images/Log10.png" alt="" style="height:34px">
+          <div>
+            <strong>FINDAT™ Consultants</strong><br>
+            <span class="muted">Forensic Institute of Data & Technology</span>
+          </div>
         </div>
-    </footer>
+        <div class="bars" aria-hidden="true">
+          <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
+        </div>
+        <p style="margin-top:10px;color:#c6cedd">We modernize reconciliations, risk, and analytics with pragmatic tools and training.</p>
+      </div>
 
-    <!-- ===================== JS SCRIPTS ===================== -->
+      <div class="foot">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Data Visualization</a></li>
+          <li><a href="#services">Reporting</a></li>
+          <li><a href="#services">Risk Assessment</a></li>
+          <li><a href="#services">Financial Intelligence</a></li>
+        </ul>
+      </div>
 
-    <!-- Side Nav toggle + smooth scroll -->
-    <script>
-        var manuBtn = document.getElementById('manuBtn');
-        var sideNav = document.getElementById('sideNav');
-        var menu = document.getElementById('menu');
-        sideNav.style.right = "-250px";
+      <div class="foot">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="#industries">Financial Services</a></li>
+          <li><a href="#industries">Public Sector</a></li>
+          <li><a href="#industries">NGOs</a></li>
+          <li><a href="#industries">Education</a></li>
+        </ul>
+      </div>
 
-        manuBtn.onclick = function () {
-            if (sideNav.style.right === "-250px") {
-                sideNav.style.right = "0";
-                menu.src = "images/close.png";
-            } else {
-                sideNav.style.right = "-250px";
-                menu.src = "images/menu.png";
-            }
+      <div class="foot">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://api.whatsapp.com/send/?phone=%2B260976913843" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/92780932/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/findat_consultants/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:info@example.com">Email us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© <span id="currentYear"></span> FINDAT™ Consultants. All rights reserved.</div>
+  </footer>
+
+  <!-- ===== Lightweight modals (login / signup / language / consultant) ===== -->
+  <div id="loginPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);align-items:center;justify-content:center">
+    <div style="background:#151a22;border:1px solid var(--line);border-radius:12px;max-width:420px;width:92%;padding:20px;box-shadow:var(--shadow)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="margin:0">Log in</h3>
+        <button class="btn" onclick="toggle('loginPopup',false)">Close</button>
+      </div>
+      <form action="profile.html" method="post">
+        <label>Email<br><input type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br><br>
+        <label>Password<br><input type="password" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br><br>
+        <button class="btn-primary" type="submit">Continue</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="signupPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);align-items:center;justify-content:center">
+    <div style="background:#151a22;border:1px solid var(--line);border-radius:12px;max-width:460px;width:92%;padding:20px;box-shadow:var(--shadow)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="margin:0">Create account</h3>
+        <button class="btn" onclick="toggle('signupPopup',false)">Close</button>
+      </div>
+      <form action="/signup" method="post" onsubmit="return true">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <label>First name<input type="text" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label>
+          <label>Last name<input type="text" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label>
+        </div><br>
+        <label>Email<input type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br>
+        <label>Password<input type="password" required minlength="8" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br>
+        <button class="btn-primary" type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="langPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);align-items:center;justify-content:center">
+    <div style="background:#151a22;border:1px solid var(--line);border-radius:12px;max-width:380px;width:92%;padding:20px;box-shadow:var(--shadow)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="margin:0">Language</h3>
+        <button class="btn" onclick="toggle('langPopup',false)">Close</button>
+      </div>
+      <select style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)">
+        <option>English</option><option>Français</option><option>Spanish</option><option>Njanya</option>
+      </select>
+      <div style="margin-top:12px"><button class="btn-primary" onclick="toggle('langPopup',false)">Save</button></div>
+    </div>
+  </div>
+
+  <div id="consultantModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);align-items:center;justify-content:center">
+    <div style="background:#151a22;border:1px solid var(--line);border-radius:12px;max-width:520px;width:92%;padding:20px;box-shadow:var(--shadow)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="margin:0">Request a consultant</h3>
+        <button class="btn" onclick="toggle('consultantModal',false)">Close</button>
+      </div>
+      <form id="consultantForm" action="/consultant-request" method="post">
+        <label>Name<input name="clientName" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br>
+        <label>Email<input name="clientEmail" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br>
+        <label>Phone<input name="clientPhone" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br>
+        <label>Service
+          <select name="servicesNeeded" required style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)">
+            <option value="">Select…</option>
+            <option>Data Visualization</option><option>Management Report</option>
+            <option>Data Examination</option><option>Process Automation</option>
+            <option>Fraud Investigation</option><option>Strategy Development</option>
+          </select>
+        </label><br>
+        <label>Consultant type
+          <select name="consultantType" required style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)">
+            <option value="">Select…</option>
+            <option>Business Forensicists (Administration)</option>
+            <option>Financial Intelligence Officer</option>
+            <option>Forensic Accountant</option>
+            <option>Reconciliation Officer</option>
+            <option>IT & Data Scientist</option>
+            <option>Cybersecurity Specialist</option>
+            <option>Research/Strategy Consultant</option>
+            <option>Grant Proposal/Policy Consultant</option>
+          </select>
+        </label><br>
+        <label>Project duration<input name="projectDuration" required placeholder="e.g., 2 weeks" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1217;color:var(--text)"></label><br>
+        <button class="btn-primary" type="submit">Send request</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Simple toggles for lightweight modals
+    function toggle(id,state){const el=document.getElementById(id); if(!el) return; el.style.display=state?'flex':'none';}
+    document.getElementById('openLogin').onclick=e=>{e.preventDefault();toggle('loginPopup',true)}
+    document.getElementById('openSignup').onclick=e=>{e.preventDefault();toggle('signupPopup',true)}
+    document.getElementById('openLang').onclick=e=>{e.preventDefault();toggle('langPopup',true)}
+    document.querySelector('.open-consultant').onclick=e=>{e.preventDefault();toggle('consultantModal',true)}
+    document.getElementById('menuToggle').onclick=()=>{const m=document.getElementById('mobileMenu'); m.style.display=m.style.display==='none'?'block':'none'}
+
+    // Search highlight (first hit)
+    function removeHighlights(){document.querySelectorAll('.search-highlight').forEach(span=>{ const t=document.createTextNode(span.textContent); span.parentNode.replaceChild(t,span); });}
+    function findAndHighlightFirst(query){
+      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false); const q=query.toLowerCase(); let node;
+      while(node=walker.nextNode()){
+        if(node.parentElement && ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) continue;
+        const text=node.nodeValue.toLowerCase(); const idx=text.indexOf(q);
+        if(idx!==-1){ const range=document.createRange(); range.setStart(node,idx); range.setEnd(node,idx+query.length); const mark=document.createElement('span'); mark.classList.add('search-highlight'); mark.style.backgroundColor='yellow'; mark.style.fontWeight='bold'; range.surroundContents(mark); mark.scrollIntoView({behavior:'smooth',block:'center'}); return true; }
+      } return false;
+    }
+    function executeSearch(){ const q=document.getElementById("siteSearch").value.trim(); if(!q){alert("Enter a search term.");return;} removeHighlights(); const found=findAndHighlightFirst(q); if(!found) alert(`No results for "${q}"`); }
+
+    // Footer year
+    document.getElementById('currentYear').textContent=new Date().getFullYear();
+
+    // Consultant form → WhatsApp ping + POST (rate limited)
+    const consultantForm=document.getElementById('consultantForm'); const RATE_KEY='findat_req_last';
+    function rateLimited(){ const last=+(localStorage.getItem(RATE_KEY)||0); return (Date.now()-last)<60000; }
+    if(consultantForm){
+      consultantForm.addEventListener('submit',async e=>{
+        e.preventDefault(); if(rateLimited()){ alert('Please wait a minute before sending another request.'); return; }
+        const fd=new FormData(consultantForm);
+        const message=`Consultant Request\nName: ${fd.get('clientName')}\nEmail: ${fd.get('clientEmail')}\nPhone: ${fd.get('clientPhone')}\nService: ${fd.get('servicesNeeded')}\nType: ${fd.get('consultantType')}\nDuration: ${fd.get('projectDuration')}`;
+        window.open(`https://api.whatsapp.com/send?phone=+260976913843&text=${encodeURIComponent(message)}`,'_blank','noopener');
+        try{ await fetch('/consultant-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(fd))}); localStorage.setItem(RATE_KEY, String(Date.now())); }catch(_){}
+        toggle('consultantModal',false); consultantForm.reset(); alert('Request sent — we’ll contact you shortly.');
+      });
+    }
+
+    // Accordion: accessible + smooth
+    (function(){
+      const toggles=document.querySelectorAll('.acc-toggle');
+      const setOpen=(t,content,marker,open)=>{
+        t.setAttribute('aria-expanded',String(open));
+        if(open){
+          content.hidden=false; content.classList.add('open');
+          content.style.maxHeight='none'; const h=content.scrollHeight; content.style.maxHeight=h+'px';
+          marker.textContent='–'; marker.setAttribute('aria-label','Collapse '+t.textContent.trim());
+        }else{
+          const h=content.scrollHeight; content.style.maxHeight=h+'px';
+          requestAnimationFrame(()=>content.style.maxHeight='0px');
+          content.classList.remove('open'); marker.textContent='+';
+          marker.setAttribute('aria-label','Expand '+t.textContent.trim());
+          content.addEventListener('transitionend',function handler(){ if(content.style.maxHeight==='0px'){content.hidden=true;} content.removeEventListener('transitionend',handler);});
+        }
+      };
+      toggles.forEach(t=>{
+        const content=t.parentElement.querySelector('.acc-content');
+        const marker=t.querySelector('.acc-marker');
+        if(!content||!marker) return; setOpen(t,content,marker,false);
+        const handle=e=>{ if(e.type==='keydown' && !(e.key==='Enter'||e.key===' ')) return; e.preventDefault(); const open=t.getAttribute('aria-expanded')==='true'; setOpen(t,content,marker,!open); };
+        t.addEventListener('click',handle); t.addEventListener('keydown',handle); marker.addEventListener('click',handle);
+        window.addEventListener('resize',()=>{ if(t.getAttribute('aria-expanded')==='true'){ content.style.maxHeight='none'; content.style.maxHeight=content.scrollHeight+'px'; }});
+      });
+    })();
+  </script>
+
+  <!-- =========================
+       CHATBASE WIDGET SETUP
+  ========================== -->
+  <script>
+    (function(){
+      if(!window.chatbase || window.chatbase("getState")!=="initialized"){
+        window.chatbase=(...arguments)=>{
+          if(!window.chatbase.q){window.chatbase.q=[]}
+          window.chatbase.q.push(arguments)
         };
+        window.chatbase=new Proxy(window.chatbase,{
+          get(target,prop){
+            if(prop==="q"){return target.q}
+            return(...args)=>target(prop,...args)
+          }
+        })
+      }
+      const onLoad=function(){
+        const script=document.createElement("script");
+        script.src="https://www.chatbase.co/embed.min.js";
+        script.id="ecWtqgP3y2GKZaZqWlMf8";   // your Chatbase bot/widget ID
+        script.domain="www.chatbase.co";
+        document.body.appendChild(script)
+      };
+      if(document.readyState==="complete"){onLoad()}
+      else{window.addEventListener("load",onLoad)}
+    })();
+  </script>
 
-        var scroll = new SmoothScroll('a[href*="#"]', {
-            speed: 1000,
-            speedAsDuration: true
-        });
-
-        // Close sideNav on link click and smooth scroll
-        document.querySelectorAll('#sideNav a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                sideNav.style.right = "-250px";
-                menu.src = "images/menu.png";
-                var href = this.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    document.querySelector(href).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                } else {
-                    window.location.href = href;
-                }
-            });
-        });
-    </script>
-
-    <!-- Preloader -->
-    <script>
-        var loader = document.getElementById('preloader');
-        window.addEventListener("load", function () {
-            if (loader) loader.style.display = "none";
-        });
-    </script>
-
-    <!-- Simple smooth scroll for # links (extra safety) -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-
-    <!-- Registration modal + form submission -->
-    <script>
-        (function () {
-            var modal = document.getElementById('registration-form');
-            var btn = document.getElementsByClassName('open-registration')[0];
-            var span = document.getElementsByClassName('close')[0];
-            var form = document.getElementById('registrationForm');
-
-            if (btn) {
-                btn.onclick = function () {
-                    modal.style.display = "block";
-                    form.reset();
-                };
-            }
-
-            if (span) {
-                span.onclick = function () {
-                    modal.style.display = "none";
-                };
-            }
-
-            window.onclick = function (event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            };
-
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    var formData = new FormData(this);
-
-                    fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
-                        method: 'POST',
-                        body: formData
-                    })
-                        .then(response => response.text())
-                        .then(text => {
-                            document.getElementById('formResponse').innerText = text;
-                            this.reset();
-                            modal.style.display = "none";
-                        })
-                        .catch(error => console.error('Error:', error));
-                });
-            }
-        })();
-    </script>
-
-    <!-- Opening status (Open / Lunch / Closed) -->
-    <script>
-        function updateOpeningStatus() {
-            const now = new Date();
-            const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
-            const hours = now.getHours();
-
-            const openingTime = 8;
-            const lunchStartTime = 13;
-            const lunchEndTime = 14;
-            const closingTime = 21;
-
-            let status = "Closed";
-            let statusColor = "red";
-
-            if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-                if (hours >= openingTime && hours < lunchStartTime) {
-                    status = "Open Now";
-                    statusColor = "green";
-                } else if (hours >= lunchStartTime && hours < lunchEndTime) {
-                    status = "Lunch Break";
-                    statusColor = "orange";
-                } else if (hours >= lunchEndTime && hours < closingTime) {
-                    status = "Open Now";
-                    statusColor = "green";
-                }
-            }
-
-            const statusElement = document.getElementById("opening-status");
-            if (statusElement) {
-                statusElement.textContent = status;
-                statusElement.style.color = statusColor;
-            }
+  <!-- =========================
+       CHATBASE IDENTITY HOOK
+       (requires /api/chatbase-token on your server)
+  ========================== -->
+  <script>
+    async function identifyUserWithChatbase(){
+      try{
+        const res=await fetch('/api/chatbase-token',{credentials:'include'});
+        if(!res.ok) throw new Error('Failed to fetch Chatbase token');
+        const data=await res.json();
+        const token=data.token;
+        if(!window.chatbase){
+          window.chatbase=function(){
+            (window.chatbase.q=window.chatbase.q||[]).push(arguments);
+          };
         }
-
-        updateOpeningStatus();
-        setInterval(updateOpeningStatus, 60000);
-    </script>
-
-    <!-- jQuery example from original (safe now because we added jQuery) -->
-    <script>
-        $(document).ready(function () {
-            $('.menu-toggle').click(function () {
-                $('.header').toggleClass('mobile-open');
-            });
-        });
-    </script>
-
-    <!-- Read More Modal open/close -->
-    <script>
-        function toggleMoreInfo() {
-            var modal = document.getElementById("readMoreModal");
-            if (!modal) return;
-            modal.style.display = modal.style.display === "block" ? "none" : "block";
-        }
-
-        window.addEventListener("click", function (event) {
-            var modal = document.getElementById("readMoreModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-    </script>
-
-    <!-- Online Exams with password -->
-    <script>
-        const correctPassword = "Admin@123";
-
-        function openOnlineExams() {
-            const enteredPassword = prompt("Enter the password to access online exams:");
-            if (enteredPassword === correctPassword) {
-                window.location.href = "Pages/Exams.html";
-            } else {
-                alert("Incorrect password. Please get the password from the admin.");
-            }
-        }
-    </script>
-
-    <!-- Current year in footer -->
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-
-    <!-- Logo slideshow -->
-    <script>
-        const logoImages = [
-            'images/LOGO Maker.png',
-            'images/Shot.png'
-        ];
-
-        let currentIndex = 0;
-        const logoElement = document.getElementById('logoSlideshow');
-
-        function changeLogo() {
-            if (!logoElement) return;
-            logoElement.style.opacity = 0;
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % logoImages.length;
-                logoElement.src = logoImages[currentIndex];
-                logoElement.style.opacity = 1;
-            }, 500);
-        }
-
-        setInterval(changeLogo, 3000);
-    </script>
-
-    <!-- =========================
-         CHATBASE WIDGET SETUP
-    ========================== -->
-    <script>
-        (function () {
-            if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-                window.chatbase = (...arguments) => {
-                    if (!window.chatbase.q) {
-                        window.chatbase.q = [];
-                    }
-                    window.chatbase.q.push(arguments);
-                };
-                window.chatbase = new Proxy(window.chatbase, {
-                    get(target, prop) {
-                        if (prop === "q") {
-                            return target.q;
-                        }
-                        return (...args) => target(prop, ...args);
-                    }
-                });
-            }
-            const onLoad = function () {
-                const script = document.createElement("script");
-                script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "ecWtqgP3y2GKZaZqWlMf8"; // your widget id
-                script.domain = "www.chatbase.co";
-                document.body.appendChild(script);
-            };
-            if (document.readyState === "complete") {
-                onLoad();
-            } else {
-                window.addEventListener("load", onLoad);
-            }
-        })();
-    </script>
-
-    <!-- =========================
-         CHATBASE IDENTITY HOOK
-         (requires /api/chatbase-token on your server)
-    ========================== -->
-    <script>
-        async function identifyUserWithChatbase() {
-            try {
-                const response = await fetch('/api/chatbase-token', {
-                    credentials: 'include'
-                });
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch Chatbase token');
-                }
-
-                const data = await response.json();
-                const token = data.token;
-
-                if (!window.chatbase) {
-                    window.chatbase = function () {
-                        (window.chatbase.q = window.chatbase.q || []).push(arguments);
-                    };
-                }
-
-                window.chatbase('identify', { token });
-            } catch (err) {
-                console.error('Chatbase identify error:', err);
-            }
-        }
-
-        window.addEventListener('load', identifyUserWithChatbase);
-    </script>
-
+        window.chatbase('identify',{token});
+      }catch(err){
+        console.error('Chatbase identify error:',err);
+      }
+    }
+    window.addEventListener('load',identifyUserWithChatbase);
+  </script>
 </body>
-
 </html>

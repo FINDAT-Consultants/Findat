@@ -7,299 +7,285 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <title> FINDAT Consultants - Home</title>
+    <title>FINDAT Consultants - Home</title>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <link rel="icon" type="image/png" href="Favicon/favicon-32x32.png" sizes="400x400">
+    <!-- Optional: jQuery because you referenced $() in one script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
-    .logo-image {
-    width: 200px; /* Adjust this value as needed */
-    height: auto; /* Maintain aspect ratio */
-}
+        .logo-image {
+            width: 200px;
+            height: auto;
+        }
 
+        .header-top-list {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.header-top-list {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Add spacing between items */
-}
+        .header-top-item {
+            font-size: 0.9em;
+        }
 
-.header-top-item {
-    font-size: 0.9em; /* Adjust this value as needed */
-}
+        .item-title,
+        .item-text,
+        .item-link {
+            font-size: 0.8em;
+        }
 
-.item-title, .item-text, .item-link {
-    font-size: 0.8em; /* Adjust this value as needed */
-}
+        #sideNav {
+            padding-top: 40px;
+        }
 
-#sideNav {
-    padding-top: 40px; /* Increase top padding to create space between the header bar and navigation */
-}
+        #sideNav nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
 
-#sideNav nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
+        #sideNav nav ul li {
+            font-size: 0.8em;
+            padding: 8px 0;
+            margin: 0;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+        }
 
-#sideNav nav ul li {
-    font-size: 0.8em; /* Compact font size */
-    padding: 8px 0; /* Slight vertical padding for readability */
-    margin: 0;
-    line-height: 1.4; /* Adjust line-height for readability */
-    display: flex;
-    align-items: center;
-}
+        #sideNav nav ul li a {
+            color: #faf0f0;
+            text-decoration: none;
+            padding-left: 10px;
+        }
 
-#sideNav nav ul li a {
-    color: #faf0f0;
-    text-decoration: none;
-    padding-left: 10px;
-}
+        #sideNav nav ul li a:hover {
+            color: #FF5733;
+        }
 
-#sideNav nav ul li a:hover {
-    color: #FF5733; /* Highlight color on hover */
-}
+        #sideNav nav ul li i {
+            margin-right: 8px;
+            color: #fef8f8;
+        }
 
-#sideNav nav ul li i {
-    margin-right: 8px; /* Space between icon and text */
-    color: #fef8f8; /* Icon color */
-}
+        /* General Section Style */
+        #developments {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
 
-/* General Section Style */
-#developments {
-    padding: 10px; /* Further reduced padding around the section */
-    background-color: #f5f5f5;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 15px; /* Space between sections */
-}
+        /* Main Heading Border */
+        #developments h2 {
+            font-size: 0.9em;
+            text-align: left;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #FF5733;
+            color: #333;
+        }
 
-/* Main Heading Border */
-#developments h2 {
-    font-size: 0.9em; /* Smaller size for main heading */
-    text-align: left;
-    margin-bottom: 8px;
-    padding-bottom: 3px;
-    border-bottom: 2px solid #FF5733;
-    color: #333;
-}
+        /* Intro Text Styling */
+        .intro-text {
+            font-size: 0.75em;
+            color: #666;
+            margin: 5px 0 12px 0;
+            line-height: 1.3;
+        }
 
-/* Intro Text Styling */
-.intro-text {
-    font-size: 0.75em; /* Slightly smaller font size for intro text */
-    color: #666;
-    margin: 5px 0 12px 0; /* Reduced margin to save space */
-    line-height: 1.3;
-}
+        /* Zebra Animation Base */
+        .zebra-animated,
+        .zebra-animated-opposite {
+            position: relative;
+            overflow: hidden;
+            color: transparent;
+            animation: textReveal 1s forwards 0.5s;
+        }
 
-/* Zebra Animation Base */
-.zebra-animated, .zebra-animated-opposite {
-    position: relative;
-    overflow: hidden;
-    color: transparent;
-    animation: textReveal 1s forwards 0.5s;
-}
+        .zebra-animated::before,
+        .zebra-animated-opposite::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 300%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    #333,
+                    #333 8px,
+                    #f5f5f5 8px,
+                    #f5f5f5 16px);
+        }
 
-.zebra-animated::before, .zebra-animated-opposite::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 300%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        45deg,
-        #333,
-        #333 8px,
-        #f5f5f5 8px,
-        #f5f5f5 16px
-    );
-}
+        /* Left to Right Animation */
+        .zebra-animated::before {
+            left: -100%;
+            animation: zebraSplash 0.7s ease-out forwards;
+        }
 
-/* Left to Right Animation */
-.zebra-animated::before {
-    left: -100%;
-    animation: zebraSplash 0.7s ease-out forwards;
-}
+        /* Right to Left Animation */
+        .zebra-animated-opposite::before {
+            right: -100%;
+            animation: zebraSplashReverse 0.7s ease-out forwards;
+        }
 
-/* Right to Left Animation */
-.zebra-animated-opposite::before {
-    right: -100%;
-    animation: zebraSplashReverse 0.7s ease-out forwards;
-}
+        /* Text Reveal Animation */
+        @keyframes textReveal {
+            to {
+                color: #333;
+            }
+        }
 
-/* Text Reveal Animation */
-@keyframes textReveal {
-    to {
-        color: #333;
-    }
-}
+        @keyframes zebraSplash {
+            to {
+                left: 100%;
+            }
+        }
 
-@keyframes zebraSplash {
-    to {
-        left: 100%;
-    }
-}
+        @keyframes zebraSplashReverse {
+            to {
+                right: 100%;
+            }
+        }
 
-@keyframes zebraSplashReverse {
-    to {
-        right: 100%;
-    }
-}
+        /* Development Item Styling */
+        .development-item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 6px;
+            margin-bottom: 8px;
+            background-color: #ffffff;
+            transition: box-shadow 0.3s ease;
+        }
 
-/* Development Item Styling */
-.development-item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 6px; /* Further reduced padding */
-    margin-bottom: 8px; /* Minimal margin for compactness */
-    background-color: #ffffff;
-    transition: box-shadow 0.3s ease;
-}
+        .development-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-.development-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        .development-item h3 {
+            font-size: 0.85em;
+            color: #333;
+            margin: 0 0 3px;
+            font-weight: bold;
+            border-bottom: 1px solid #FF5733;
+            padding-bottom: 2px;
+        }
 
-.development-item h3 {
-    font-size: 0.85em; /* Reduced font size for headers */
-    color: #333;
-    margin: 0 0 3px;
-    font-weight: bold;
-    border-bottom: 1px solid #FF5733;
-    padding-bottom: 2px;
-}
+        .development-item p {
+            font-size: 0.7em;
+            color: #555;
+            margin: 4px 0 0 0;
+            line-height: 1.2;
+        }
 
-.development-item p {
-    font-size: 0.7em; /* Slightly smaller font size for descriptions */
-    color: #555;
-    margin: 4px 0 0 0;
-    line-height: 1.2; /* Reduced line-height for compactness */
-}
+        .modal-content {
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
 
-.modal-content {
-    background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
-    color: #ffffff;
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 500px;
-    margin: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+        .logo-image {
+            transition: opacity 1s ease-in-out;
+            width: 250px;
+            height: 100px;
+            object-fit: cover;
+        }
 
-.logo-image {
-    transition: opacity 1s ease-in-out; /* Smooth fade transition */
-}
+        .client-logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
 
-.logo-image {
-    width: 250px; /* Set to the desired width */
-    height: 100px; /* Set to the desired height */
-    object-fit: cover; /* Ensure image fills the area without distortion */
-    transition: opacity 1s ease-in-out;
-}
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-.client-logos-container {
-    display: flex;
-    justify-content: center; /* Centers the logos horizontally */
-    align-items: center;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
+        .client-logos img {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
+            margin: 0 10px;
+            filter: brightness(0.3) contrast(1.2);
+            transition: filter 0.3s ease;
+        }
 
-.client-logos {
-    display: flex;
-    justify-content: center; /* Ensures logos are centered within the container */
-    align-items: center;
-    gap: 10px; /* Adjust gap between logos if needed */
-}
+        .client-logos img:hover {
+            filter: none;
+        }
 
-.client-logos img {
-    width: 100px; /* Reduce size of each logo */
-    height: auto;
-    flex-shrink: 0;
-    margin: 0 10px; /* Add margin to space out logos */
-}
+        .banner-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 80px;
+        }
 
-.banner-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Space between the buttons */
-    margin-top: 80px; /* Add space between the buttons and the text above */
-}
+        .read-more-btn,
+        .shop-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FF5733;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-.read-more-btn,
-.shop-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #FF5733;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
+        .read-more-btn:hover,
+        .shop-button:hover {
+            background-color: #FF4519;
+        }
 
-.read-more-btn:hover,
-.shop-button:hover {
-    background-color: #FF4519;
-}
+        .read-more-btn span,
+        .shop-button span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: all 0.3s ease;
+        }
 
-.read-more-btn span,
-.shop-button span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    top: 0;
-    left: -100%;
-    transition: all 0.3s ease;
-}
+        .read-more-btn:hover span,
+        .shop-button:hover span {
+            left: 100%;
+        }
 
-.read-more-btn:hover span,
-.shop-button:hover span {
-    left: 100%;
-}
-
-
-#feature {
-    margin-top: 20px; /* Adds space between Research and Development and Features */
-}
-
-.client-logos img {
-    width: 100px; /* Set the logo size */
-    height: auto;
-    flex-shrink: 0;
-    margin: 0 10px;
-    filter: brightness(0.3) contrast(1.2); /* Darken logos with some contrast */
-    transition: filter 0.3s ease; /* Smooth transition on hover */
-}
-
-.client-logos img:hover {
-    filter: none; /* Restore original colors on hover */
-}
-
-
+        #feature {
+            margin-top: 20px;
+        }
     </style>
-</head>
 </head>
 
 <body class="no-scrollbar">
 
-
-<body>
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     <header class="header">
         <div class="header-top">
             <div class="container">
                 <div class="header-content">
-                    <img src="images/LOGO Maker.png" alt="Logo" class="logo-image" id="logoSlideshow" style="width: 250px; height: auto;">
-
+                    <img src="images/LOGO Maker.png" alt="Logo" class="logo-image" id="logoSlideshow">
 
                     <ul class="header-top-list">
                         <li class="header-top-item">
@@ -309,13 +295,13 @@
                         </li>
                         <li class="header-top-item">
                             <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                            <p class="item-title"></p>
-                            <p class="item-text"><strong style="color: rgb(22, 215, 93);">Operating Days: Monday - Friday, 08 am - 09 pm</strong></p>
-
-
+                            <p class="item-text">
+                                <strong style="color: rgb(22, 215, 93);">
+                                    Operating Days: Monday - Friday, 08 am - 09 pm
+                                </strong>
+                            </p>
                         </li>
-                        <!-- ... -->
-                        
+
                         <li class="header-top-item">
                             <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
                             <p class="item-title"><strong style="color: #FF5733;">Status :</strong></p>
@@ -324,57 +310,51 @@
                                 <img src="images/menu.png" alt="" id="menu">
                             </div>
                         </li>
-    <!-- ... -->
-         
+                    </ul>
+
                 </div>
             </div>
         </div>
     </header>
-    
-    
-    
-<body>
+
     <div id="preloader"></div>
+
     <section id="banner">
         <div class="ribbon">
-            
-            
-             <div class="banner-text">
-            <h2>The only place</h2>
-            <p>Where you can get it done</p>
-            <div class="banner-btn-container">
-                <a href="#" class="read-more-btn" onclick="toggleMoreInfo()"><span></span> Read More</a>
-                <a href="Pages/Shop.html" class="shop-button"><span></span> Visit Our Shop</a>
+            <div class="banner-text">
+                <h2>The only place</h2>
+                <p>Where you can get it done</p>
+                <div class="banner-btn-container">
+                    <a href="#" class="read-more-btn" onclick="toggleMoreInfo()"><span></span> Read More</a>
+                    <a href="Pages/Shop.html" class="shop-button"><span></span> Visit Our Shop</a>
+                </div>
             </div>
-            
         </div>
-            
-        </div>
-        </div>
-
 
         <section id="developments">
             <div class="developments-header">
                 <h2 class="zebra-animated">Research and Developments</h2>
-                <p class="intro-text zebra-animated">The Forensic Institute of Data and Technology Consultants undertakes various research projects and has developed innovative solutions in the fields of FinTech and personnel management. These include:</p>
+                <p class="intro-text zebra-animated">
+                    The Forensic Institute of Data and Technology Consultants undertakes various research projects and
+                    has developed innovative solutions in the fields of FinTech and personnel management. These include:
+                </p>
             </div>
             <div class="developments-labels">
                 <div class="development-item zebra-animated-opposite">
                     <h3>ProATR</h3>
-                    <p>A pro-artificial transaction reconciliator that enhances operational speed in the bank reconciliation process via automation of repetitive tasks using AI.</p>
+                    <p>
+                        A pro-artificial transaction reconciliator that enhances operational speed in the bank
+                        reconciliation process via automation of repetitive tasks using AI.
+                    </p>
                 </div>
                 <div class="development-item zebra-animated-opposite">
                     <h3>KLOX</h3>
                     <p>A Time tracking app that operates in real-time, monitoring the check-in and check-out of personnel.</p>
                 </div>
-                <!-- Add more development items as needed -->
             </div>
         </section>
-        
-
-        
-
     </section>
+
     <div id="sideNav">
         <nav>
             <ul>
@@ -398,44 +378,39 @@
         </nav>
     </div>
 
-<!-- Registration Form Modal -->
-<div id="registration-form" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <form action="https://script.google.com/macros/s/AKfycbxT4CUKy57upd-d3kWysBEdzOVbwgCfpeizTWWE49WKTN74Z_y2GOwPgK2KiBZ9j27_5w/exec" method="post" name="registration-form">
-            <h2>Course Registration</h2>
-            <input type="date" name="date" placeholder="Registration Date" required>
-            <input type="text" name="firstName" placeholder="First Name" required>
-            <input type="text" name="lastName" placeholder="Last Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="text" name="phoneNumber" placeholder="Phone Number" required>
-            <input type="text" name="location" placeholder="Location" required>
+    <!-- Registration Form Modal -->
+    <div id="registration-form" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form action="https://script.google.com/macros/s/AKfycbxT4CUKy57upd-d3kWysBEdzOVbwgCfpeizTWWE49WKTN74Z_y2GOwPgK2KiBZ9j27_5w/exec"
+                  method="post" name="registration-form" id="registrationForm">
+                <h2>Course Registration</h2>
+                <input type="date" name="date" placeholder="Registration Date" required>
+                <input type="text" name="firstName" placeholder="First Name" required>
+                <input type="text" name="lastName" placeholder="Last Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+                <input type="text" name="location" placeholder="Location" required>
 
-            <fieldset>
-                <legend>Select your course of interest:</legend>
-                <label><input type="checkbox" name="msexcel" value="✔"> MS Excel</label>
-                <label><input type="checkbox" name="sql" value="✔"> SQL</label>
-                <label><input type="checkbox" name="mspowerbi" value="✔"> MS Power Bi</label>
-                <label><input type="checkbox" name="tableau" value="✔"> Tableau</label>
+                <fieldset>
+                    <legend>Select your course of interest:</legend>
+                    <label><input type="checkbox" name="msexcel" value="✔"> MS Excel</label>
+                    <label><input type="checkbox" name="sql" value="✔"> SQL</label>
+                    <label><input type="checkbox" name="mspowerbi" value="✔"> MS Power Bi</label>
+                    <label><input type="checkbox" name="tableau" value="✔"> Tableau</label>
+                </fieldset>
 
-            </fieldset>
+                <input type="submit" value="Submit" id="submit">
+            </form>
 
-            <input type="submit" value="Submit" id="submit">
-        </form>
-
-        <div id="formResponse"></div>
-
+            <div id="formResponse"></div>
+        </div>
     </div>
-</div>
-
-
-
-
-
 
     <div id="manuBtn">
         <img src="images/menu.png" alt="" id="menu">
     </div>
+
     <!-- Features Section -->
     <section id="feature">
         <div class="title-text">
@@ -473,7 +448,6 @@
                 </div>
             </div>
 
-
             <!-- Clients Section Right Side -->
             <section id="clients">
                 <h2>Our Clients</h2>
@@ -485,22 +459,13 @@
                         <img src="images/cz.png" alt="Client Logo 4">
                         <img src="images/ru.png" alt="Client Logo 5">
                         <img src="images/mu.png" alt="Client Logo 6">
-                        <!-- Add more client logos as needed -->
-                    </section>
+                    </div>
                 </div>
-            </div>
-            
-
-
-        
-
-
-
+            </section>
         </div>
     </section>
-    <!-- Featured Section Ends here -->
 
-    <!-- Service Section Starts here -->
+    <!-- Service Section -->
     <section id="service">
         <div class="title-text">
             <p>CONSULTANCY SERVICES</p>
@@ -513,7 +478,7 @@
                 <div class="service-desc">
                     <h3>Data Visualization</h3>
                     <hr>
-                    <p>High-quality and intuitive visuals for swift insights..</p>
+                    <p>High-quality and intuitive visuals for swift insights.</p>
                 </div>
             </div>
             <div class="single-service">
@@ -546,7 +511,7 @@
         </div>
     </section>
 
-    <!-- Testimonial Section Starts Here -->
+    <!-- Testimonial Section -->
     <section id="testimonial">
         <div class="background-gif-container">
             <div class="background-gif"></div>
@@ -577,7 +542,8 @@
                         <small>Database - Management</small>
                     </div>
                 </div>
-                <p>This comprehensive SQL course is designed to equip participants with a deep understanding and practical proficiency in managing relational databases using Structured Query Language (SQL).
+                <p>
+                    This comprehensive SQL course is designed to equip participants with a deep understanding and practical proficiency in managing relational databases using Structured Query Language (SQL).
                     Our primary goal is to provide you with a solid foundation in SQL, starting from the basics of crafting queries and progressing to more advanced data manipulation techniques.
                 </p>
             </div>
@@ -590,36 +556,35 @@
                         <small>Data Visualization</small>
                     </div>
                 </div>
-                <p>This course aims to provide participants with a comprehensive understanding of Microsoft Power BI and equip them with the practical skills necessary to create compelling data visualizations and interactive dashboards.
+                <p>
+                    This course aims to provide participants with a comprehensive understanding of Microsoft Power BI and equip them with the practical skills necessary to create compelling data visualizations and interactive dashboards.
                 </p>
             </div>
         </div>
 
-        <!-- Pop-up Modal -->
-<div id="readMoreModal" class="modal">
-    <div class="modal-content">
-        
-        <h2>More Information</h2>
-        <h4>Our Vision:</h4>
-        <p>At FINDAT Consultants, we see a future where data is the catalyst for growth, innovation, and transformation across all industries. Our vision extends beyond providing data-driven solutions for organizations; we are committed to educating and empowering individuals from various fields with the skills to harness the power of data analytics.</p>
-            
-        <h4>Our Mission:</h4> 
-       <p> Our dual mission is to empower organizations by turning data into actionable insights and to educate a diverse range of professionals in the field of data analytics. We aim to bridge the gap between data and decision-making, making advanced analytics accessible to all.</p>
-        <!-- Add more content here as needed -->
+        <!-- Read More Modal -->
+        <div id="readMoreModal" class="modal">
+            <div class="modal-content">
+                <h2>More Information</h2>
+                <h4>Our Vision:</h4>
+                <p>At FINDAT Consultants, we see a future where data is the catalyst for growth, innovation, and transformation across all industries. Our vision extends beyond providing data-driven solutions for organizations; we are committed to educating and empowering individuals from various fields with the skills to harness the power of data analytics.</p>
 
-        <h4> What We Do:</h4>
-        Our firm specializes in providing data-driven business solutions, comprehensive educational programs in data analytics for professionals across various fields, leveraging financial expertise and the latest in AI and machine learning, and crafting customized strategies to meet the unique needs of businesses and individual learning goals.
-    
-        <h4> Our Approach:</h4>
-        Our approach combines collaborative learning and partnerships, ethical data practices, and a commitment to continuous innovation, ensuring that both our clients and students benefit from tailored, transparent, and cutting-edge education in data analytics.
-    
-        <h4> Schedule a meeting with us and will give you back insights with with Precision and Innovation.</h4>
-        You are just a call away from getting it done
+                <h4>Our Mission:</h4>
+                <p>Our dual mission is to empower organizations by turning data into actionable insights and to educate a diverse range of professionals in the field of data analytics. We aim to bridge the gap between data and decision-making, making advanced analytics accessible to all.</p>
 
-    </div>
-</div>
+                <h4>What We Do:</h4>
+                <p>Our firm specializes in providing data-driven business solutions, comprehensive educational programs in data analytics for professionals across various fields, leveraging financial expertise and the latest in AI and machine learning, and crafting customized strategies to meet the unique needs of businesses and individual learning goals.</p>
 
-    <!-- Footer Section -->
+                <h4>Our Approach:</h4>
+                <p>Our approach combines collaborative learning and partnerships, ethical data practices, and a commitment to continuous innovation, ensuring that both our clients and students benefit from tailored, transparent, and cutting-edge education in data analytics.</p>
+
+                <h4>Schedule a meeting with us and we will give you back insights with Precision and Innovation.</h4>
+                <p>You are just a call away from getting it done.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="social-links">
@@ -634,348 +599,293 @@
         </div>
     </footer>
 
-   
+    <!-- ===================== JS SCRIPTS ===================== -->
+
+    <!-- Side Nav toggle + smooth scroll -->
     <script>
-        var manuBtn = document.getElementById('manuBtn')
-        var sideNav = document.getElementById('sideNav')
-        var menu = document.getElementById('menu')
+        var manuBtn = document.getElementById('manuBtn');
+        var sideNav = document.getElementById('sideNav');
+        var menu = document.getElementById('menu');
         sideNav.style.right = "-250px";
+
         manuBtn.onclick = function () {
-            if (sideNav.style.right == "-250px") {
+            if (sideNav.style.right === "-250px") {
                 sideNav.style.right = "0";
                 menu.src = "images/close.png";
-            }
-            else {
+            } else {
                 sideNav.style.right = "-250px";
                 menu.src = "images/menu.png";
-
             }
-        }
-        // Smoth scrolling js
+        };
+
         var scroll = new SmoothScroll('a[href*="#"]', {
             speed: 1000,
             speedAsDuration: true
         });
+
+        // Close sideNav on link click and smooth scroll
+        document.querySelectorAll('#sideNav a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                sideNav.style.right = "-250px";
+                menu.src = "images/menu.png";
+                var href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.location.href = href;
+                }
+            });
+        });
     </script>
 
-    <!-- Script for preloader -->
+    <!-- Preloader -->
     <script>
         var loader = document.getElementById('preloader');
-        window.addEventListener("load", function(){
-            loader.style.display = "none";
-        })
+        window.addEventListener("load", function () {
+            if (loader) loader.style.display = "none";
+        });
     </script>
 
-
-<script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+    <!-- Simple smooth scroll for # links (extra safety) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-    });
-</script>
+    </script>
 
-<script>
-   // Get the modal
-var modal = document.getElementById("readMoreModal");
+    <!-- Registration modal + form submission -->
+    <script>
+        (function () {
+            var modal = document.getElementById('registration-form');
+            var btn = document.getElementsByClassName('open-registration')[0];
+            var span = document.getElementsByClassName('close')[0];
+            var form = document.getElementById('registrationForm');
 
+            if (btn) {
+                btn.onclick = function () {
+                    modal.style.display = "block";
+                    form.reset();
+                };
+            }
 
-// JavaScript for opening and closing the registration modal
-var modal = document.getElementById('registration-form');
-        var btn = document.getElementsByClassName('open-registration')[0];
-        var span = document.getElementsByClassName('close')[0];
-        var form = document.getElementById('registrationForm');
+            if (span) {
+                span.onclick = function () {
+                    modal.style.display = "none";
+                };
+            }
 
-        btn.onclick = function() {
-            modal.style.display = "block";
-            form.reset(); // Reset the form when the modal is opened
-        }
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
 
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var formData = new FormData(this);
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+                    fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(text => {
+                            document.getElementById('formResponse').innerText = text;
+                            this.reset();
+                            modal.style.display = "none";
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            }
+        })();
+    </script>
+
+    <!-- Opening status (Open / Lunch / Closed) -->
+    <script>
+        function updateOpeningStatus() {
+            const now = new Date();
+            const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+            const hours = now.getHours();
+
+            const openingTime = 8;
+            const lunchStartTime = 13;
+            const lunchEndTime = 14;
+            const closingTime = 21;
+
+            let status = "Closed";
+            let statusColor = "red";
+
+            if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                if (hours >= openingTime && hours < lunchStartTime) {
+                    status = "Open Now";
+                    statusColor = "green";
+                } else if (hours >= lunchStartTime && hours < lunchEndTime) {
+                    status = "Lunch Break";
+                    statusColor = "orange";
+                } else if (hours >= lunchEndTime && hours < closingTime) {
+                    status = "Open Now";
+                    statusColor = "green";
+                }
+            }
+
+            const statusElement = document.getElementById("opening-status");
+            if (statusElement) {
+                statusElement.textContent = status;
+                statusElement.style.color = statusColor;
             }
         }
 
-        // JavaScript for form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
+        updateOpeningStatus();
+        setInterval(updateOpeningStatus, 60000);
+    </script>
 
-            fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById('formResponse').innerText = text;
-                this.reset(); // Reset the form after submission
-                modal.style.display = "none"; // Optionally, close the modal after submission
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-        var form = document.getElementById('registrationForm');
-var refreshBtn = document.getElementsByClassName('refresh')[0];
-
-refreshBtn.onclick = function() {
-    form.reset(); // Reset the form when the refresh icon is clicked
-}
-
-</script>
-
-
-<script>
-    function updateOpeningStatus() {
-        const now = new Date();
-        const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-
-        // Define your opening hours
-        const openingTime = 8; // 8:00 AM
-        const lunchStartTime = 13; // 1:00 PM
-        const lunchEndTime = 14; // 2:00 PM
-        const closingTime = 21; // 9:00 PM
-
-        let status = "Closed";
-        let statusColor = "red"; // Default color for Closed
-
-        // Check if it's a weekday
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Business days Monday to Friday
-            if (hours >= openingTime && hours < lunchStartTime) {
-                status = "Open Now";
-                statusColor = "green";
-            } else if (hours >= lunchStartTime && hours < lunchEndTime) {
-                status = "Lunch Break";
-                statusColor = "orange";
-            } else if (hours >= lunchEndTime && hours < closingTime) {
-                status = "Open Now";
-                statusColor = "green";
-            }
-        }
-        // Sundays (0) and Saturdays (6) will fall into the default "Closed" status
-
-        // Update the status element
-        const statusElement = document.getElementById("opening-status");
-        statusElement.textContent = status;
-        statusElement.style.color = statusColor;
-    }
-
-    // Update the status every minute
-    updateOpeningStatus();
-    setInterval(updateOpeningStatus, 60000); // 60,000 milliseconds (1 minute)
-
-    // jQuery example
-$(document).ready(function() {
-    $('.menu-toggle').click(function() {
-        $('.header').toggleClass('mobile-open');
-    });
-});
-
-</script>
-
-<script>
-    let dropdownVisible = false;
-    const dropdownMenu = document.getElementById('dropdownMenu');
-
-    // JavaScript to toggle the dropdown
-    function toggleDropdown() {
-        if (dropdownVisible) {
-            dropdownMenu.style.display = 'none';
-        } else {
-            dropdownMenu.style.display = 'block';
-        }
-        dropdownVisible = !dropdownVisible;
-    }
-
-    // JavaScript to add underline effect to selected option
-    function selectOption(option) {
-        const dropdownItems = document.querySelectorAll('.dropdown-content li');
-        
-        // Remove underline effect from all items
-        dropdownItems.forEach(item => item.classList.remove('selected'));
-        
-        // Add underline effect to the selected item
-        option.classList.add('selected');
-        
-        // You can add logic here to handle the selected option
-        alert('Selected: ' + option.innerText);
-    }
-</script>
-<script>
-    // JavaScript to open a pop-up when a dropdown item is clicked
-    function openPopup(option) {
-        // You can add logic here to open a pop-up based on the selected option
-        alert('Clicked on ' + option);
-    }
-</script>
-
-<script>
-
- // JavaScript for opening and closing the registration modal
- var modal = document.getElementById('registration-form');
-        var btn = document.getElementsByClassName('open-registration')[0];
-        var span = document.getElementsByClassName('close')[0];
-        var form = document.getElementById('registrationForm');
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-            form.reset(); // Reset the form when the modal is opened
-        }
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // JavaScript for form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-
-            fetch('https://script.google.com/macros/s/AKfycbw677iELL4zIeoqiE5px2DpNLQvbEu0O18N-lyKsM6U_ZXNOaDFlTCgZj4JqUTfsCVBrQ/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById('formResponse').innerText = text;
-                this.reset(); // Reset the form after submission
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-</script>
-
-<script>
-    // JavaScript function to toggle the visibility of the modal
-    function toggleMoreInfo() {
-        var modal = document.getElementById("readMoreModal");
-        modal.style.display = modal.style.display === "block" ? "none" : "block";
-    }
-
-    // Add an event listener to close the modal when clicking outside of it
-    window.addEventListener("click", function(event) {
-        var modal = document.getElementById("readMoreModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-</script>
-
-<script>
-    // Define the correct password
-    const correctPassword = "Admin@123";
-
-    // JavaScript function to prompt for the password
-    function openOnlineExams() {
-        // Prompt the user for the password
-        const enteredPassword = prompt("Enter the password to access online exams:");
-
-        // Check if the entered password is correct
-        if (enteredPassword === correctPassword) {
-            // Redirect to the exams page or open the exams in a new tab/window
-            window.location.href = "Pages/Exams.html"; // Replace with the actual URL of the exams page
-        } else {
-            // Display a message if the password is incorrect
-            alert("Incorrect password. Please get the password from the admin.");
-        }
-    }
-</script>
-
-<script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
-
-
-<script>
-    var manuBtn = document.getElementById('manuBtn');
-    var sideNav = document.getElementById('sideNav');
-    var menu = document.getElementById('menu');
-    sideNav.style.right = "-250px";
-
-    manuBtn.onclick = function() {
-        if (sideNav.style.right == "-250px") {
-            sideNav.style.right = "0";
-            menu.src = "images/close.png";
-        }
-        else {
-            sideNav.style.right = "-250px";
-            menu.src = "images/menu.png";
-        }
-    }
-
-    // Add event listeners to all links in sideNav
-    document.querySelectorAll('#sideNav a').forEach(link => {
-        link.addEventListener('click', function() {
-            // Close sideNav when any link is clicked
-            sideNav.style.right = "-250px";
-            menu.src = "images/menu.png"; // Change the menu icon back
-
-            // Smooth scroll to the section
-            // This relies on your existing smooth scroll functionality
-            var href = this.getAttribute('href');
-            document.querySelector(href).scrollIntoView({
-                behavior: 'smooth'
+    <!-- jQuery example from original (safe now because we added jQuery) -->
+    <script>
+        $(document).ready(function () {
+            $('.menu-toggle').click(function () {
+                $('.header').toggleClass('mobile-open');
             });
-
-            // Prevent the default anchor behavior
-            return false;
         });
-    });
+    </script>
 
-    // Existing smooth scrolling js code for reference
-    var scroll = new SmoothScroll('a[href*="#"]', {
-        speed: 1000,
-        speedAsDuration: true
-    });
-</script>
+    <!-- Read More Modal open/close -->
+    <script>
+        function toggleMoreInfo() {
+            var modal = document.getElementById("readMoreModal");
+            if (!modal) return;
+            modal.style.display = modal.style.display === "block" ? "none" : "block";
+        }
 
-<script>
-    // Array of logo image paths
-    const logoImages = [
-        'images/LOGO Maker.png',
-        'images/Shot.png',
+        window.addEventListener("click", function (event) {
+            var modal = document.getElementById("readMoreModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+    <!-- Online Exams with password -->
+    <script>
+        const correctPassword = "Admin@123";
+
+        function openOnlineExams() {
+            const enteredPassword = prompt("Enter the password to access online exams:");
+            if (enteredPassword === correctPassword) {
+                window.location.href = "Pages/Exams.html";
+            } else {
+                alert("Incorrect password. Please get the password from the admin.");
+            }
+        }
+    </script>
+
+    <!-- Current year in footer -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Logo slideshow -->
+    <script>
+        const logoImages = [
+            'images/LOGO Maker.png',
+            'images/Shot.png'
         ];
 
-let currentIndex = 0;
-const logoElement = document.getElementById('logoSlideshow');
+        let currentIndex = 0;
+        const logoElement = document.getElementById('logoSlideshow');
 
-function changeLogo() {
-    // Fade out the logo
-    logoElement.style.opacity = 0;
+        function changeLogo() {
+            if (!logoElement) return;
+            logoElement.style.opacity = 0;
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % logoImages.length;
+                logoElement.src = logoImages[currentIndex];
+                logoElement.style.opacity = 1;
+            }, 500);
+        }
 
-    // After the fade-out effect, change the image and fade in
-    setTimeout(() => {
-        currentIndex = (currentIndex + 1) % logoImages.length;
-        logoElement.src = logoImages[currentIndex];
+        setInterval(changeLogo, 3000);
+    </script>
 
-        // Fade in the new logo
-        logoElement.style.opacity = 1;
-    }, 500); // Half of the transition time for smoothness
-}
+    <!-- =========================
+         CHATBASE WIDGET SETUP
+    ========================== -->
+    <script>
+        (function () {
+            if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+                window.chatbase = (...arguments) => {
+                    if (!window.chatbase.q) {
+                        window.chatbase.q = [];
+                    }
+                    window.chatbase.q.push(arguments);
+                };
+                window.chatbase = new Proxy(window.chatbase, {
+                    get(target, prop) {
+                        if (prop === "q") {
+                            return target.q;
+                        }
+                        return (...args) => target(prop, ...args);
+                    }
+                });
+            }
+            const onLoad = function () {
+                const script = document.createElement("script");
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.id = "ecWtqgP3y2GKZaZqWlMf8"; // your widget id
+                script.domain = "www.chatbase.co";
+                document.body.appendChild(script);
+            };
+            if (document.readyState === "complete") {
+                onLoad();
+            } else {
+                window.addEventListener("load", onLoad);
+            }
+        })();
+    </script>
 
-// Change logo every 3 seconds (3000 ms) with smooth transitions
-setInterval(changeLogo, 3000);
-</script>
+    <!-- =========================
+         CHATBASE IDENTITY HOOK
+         (requires /api/chatbase-token on your server)
+    ========================== -->
+    <script>
+        async function identifyUserWithChatbase() {
+            try {
+                const response = await fetch('/api/chatbase-token', {
+                    credentials: 'include'
+                });
 
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Chatbase token');
+                }
 
+                const data = await response.json();
+                const token = data.token;
 
+                if (!window.chatbase) {
+                    window.chatbase = function () {
+                        (window.chatbase.q = window.chatbase.q || []).push(arguments);
+                    };
+                }
 
+                window.chatbase('identify', { token });
+            } catch (err) {
+                console.error('Chatbase identify error:', err);
+            }
+        }
+
+        window.addEventListener('load', identifyUserWithChatbase);
+    </script>
 
 </body>
 

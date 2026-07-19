@@ -1,0 +1,30 @@
+{
+  "build": "FINDAT protected GitHub Pages package",
+  "encryption": "AES-256-GCM",
+  "readable_application_source_in_public_package": false,
+  "payloads": {
+    "页面7.fdx": {
+      "plain_size": 1731394,
+      "encrypted_size": 1731410,
+      "sha256": "8e6641f62a918753df83b4949c7e55895f5b78a57e872e561a71bae0a6815827",
+      "encrypted_sha256": "6aac829d838f5a35973d41562d203a8fcb90e555f02196b2ed9069b87ee077bd"
+    },
+    "样式8.fdx": {
+      "plain_size": 429035,
+      "encrypted_size": 429051,
+      "sha256": "41df2f8d8128ffecd0086aa7d9f8a3b14b690a7d452b8cddd544b7003dcd0974",
+      "encrypted_sha256": "421605c2a17e37641298cf2ae9548e264ea6f2c42a799528fad987398e9e46fa"
+    },
+    "逻辑9.fdx": {
+      "plain_size": 528726,
+      "encrypted_size": 528742,
+      "sha256": "ee11553744e1231095e59651d7666f11606281d85546265db4f6534d3b71be7e",
+      "encrypted_sha256": "0e4d69435ef5a576fa18e6419ff1702508ebfd8f05cce1b2dfb87ac42c4ae129"
+    }
+  },
+  "notes": [
+    "The browser decrypts application content at runtime.",
+    "No source maps are included.",
+    "Keep the separate private source backup offline."
+  ]
+}

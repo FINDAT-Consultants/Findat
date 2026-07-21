@@ -1,0 +1,26 @@
+{
+  "source_file": "Findat_v6_OCR_Enabled(1).html",
+  "css_blocks_extracted": 36,
+  "inline_scripts_extracted": 26,
+  "external_scripts_retained": 5,
+  "missing_original_assets": [
+    "Classes/Data.MP4",
+    "Classes/Data-Thumbnail.jpg",
+    "Favicon/favicon-32x32.png"
+  ],
+  "generated_placeholders": [
+    "Classes/Data-Thumbnail.jpg",
+    "Favicon/favicon-32x32.png"
+  ],
+  "media_deterrents": [
+    "context menu and drag blocked",
+    "native video download controls disabled",
+    "picture-in-picture and remote playback disabled",
+    "direct media links removed",
+    "media paths assigned at runtime",
+    "media hidden when printing"
+  ],
+  "encrypted_media_assets": [
+    "Classes/Data-Thumbnail.jpg -> assets/data/图像6.fdx (public build only)"
+  ]
+}

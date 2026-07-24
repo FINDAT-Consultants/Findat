@@ -1,0 +1,11 @@
+{
+  "payload": "assets/core.caea29c9dadebab2.dat",
+  "loader": "assets/boot.cbfd2fad0c4b86ca.js",
+  "stylesheet": "assets/ui.d24e6e12bc5cc956.css",
+  "runtime_original_bytes": 682014,
+  "runtime_compressed_bytes": 199280,
+  "runtime_encrypted_bytes": 199308,
+  "integration": "Embedded in FINDAT platform as FINDAT Cloud",
+  "runtime_asset": "core.6cd4da03d83e7e6c.dat",
+  "boot_asset": "boot.92ac8b56c5b0ae24.js"
+}

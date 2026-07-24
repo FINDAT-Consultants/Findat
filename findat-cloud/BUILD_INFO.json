@@ -1,0 +1,9 @@
+{
+  "payload": "assets/core.caea29c9dadebab2.dat",
+  "loader": "assets/boot.cbfd2fad0c4b86ca.js",
+  "stylesheet": "assets/ui.d24e6e12bc5cc956.css",
+  "runtime_original_bytes": 682309,
+  "runtime_compressed_bytes": 199394,
+  "runtime_encrypted_bytes": 199422,
+  "integration": "Embedded full-viewport in FINDAT platform; Exit Cloud returns to platform"
+}

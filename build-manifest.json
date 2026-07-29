@@ -1,0 +1,314 @@
+{
+  "source_file": "Findat_v6_OCR_Enabled(1).html",
+  "css_blocks_extracted": 36,
+  "inline_scripts_extracted": 26,
+  "external_scripts_retained": 5,
+  "missing_original_assets": [
+    "Classes/Data.MP4",
+    "Classes/Data-Thumbnail.jpg",
+    "Favicon/favicon-32x32.png"
+  ],
+  "generated_placeholders": [
+    "Classes/Data-Thumbnail.jpg",
+    "Favicon/favicon-32x32.png"
+  ],
+  "media_deterrents": [
+    "context menu and drag blocked",
+    "native video download controls disabled",
+    "picture-in-picture and remote playback disabled",
+    "direct media links removed",
+    "media paths assigned at runtime",
+    "media hidden when printing"
+  ],
+  "encrypted_media_assets": [
+    "Classes/Data-Thumbnail.jpg -> assets/data/图像6.fdx (public build only)"
+  ],
+  "cloud_integration": {
+    "source_package": "findat_cloud_taskbar_clock_calendar_fixed(1).zip",
+    "entry_point": "cloud/index.html",
+    "navigation_position": "after Developments",
+    "wrapper_header": "6px decorative strip only; no title, status text, or close button",
+    "cloud_icon": "orange",
+    "exam_center_removed": true,
+    "desktop_system_icons": "FINDAT Cloud, Applications, and Trash begin in a spaced left-hand column and retain any user-moved positions",
+    "storage_provider": "Supabase Storage REST",
+    "storage_mode": "Supabase-only document bytes; browser metadata only; no custom document table",
+    "bucket": "findat-documents",
+    "object_root": "findat-v1",
+    "remote_commit_required": true,
+    "browser_document_cache": false,
+    "desktop_saved_badge": "green tick",
+    "desktop_document_layout": "Horizontal left-to-right rows below system shortcuts; new files use the next free cell; user positions persist exactly and collision protection prevents overlays",
+    "document_preview": "Word, Excel and PowerPoint open in an embedded Office web viewer; PDF opens inline through a typed Blob URL; download remains explicit",
+    "mobile_document_access": "Single-tap open on touch devices, full-viewport viewer, immediate cached metadata render, 15-second refresh",
+    "metadata_index": "findat-v1/index.json with background full Storage reconciliation",
+    "built_in_wallpapers": [
+      "Monterey Dark",
+      "Monterey Light",
+      "FINDAT Office Light",
+      "FINDAT Office Dark",
+      "Sunrise",
+      "Ocean",
+      "Aurora",
+      "Graphite",
+      "Cloud Blue"
+    ],
+    "default_wallpaper": "Monterey Dark",
+    "wallpaper_sync": "Supabase Storage findat-v1/settings/personalization.json with a versioned custom-wallpaper.jpg; startup, visibility and 15-second refresh"
+  },
+  "auth_and_database": {
+    "provider": "Supabase Auth and Postgres",
+    "header_controls": [
+      "Forgot Username or Password",
+      "Register",
+      "Username",
+      "Password",
+      "Login"
+    ],
+    "public_registration_role": "client only",
+    "roles": {
+      "client": "write/edit own article text, upload a cover photo and submit; no assignment, supporting-document changes, delete, approval or publish",
+      "consultant": "edit/proofread collaborative or assigned articles and change cover photos/supporting media; no general publish privilege, with article-specific publishing only when explicitly delegated by an Administrator",
+      "admin": "write and publish directly; review/edit/return/delete/approve submissions; delete published articles; protected account management"
+    },
+    "tables": [
+      "findat_profiles",
+      "findat_articles",
+      "findat_audit_log",
+      "findat_article_collaborators",
+      "findat_notifications",
+      "findat_courses",
+      "findat_course_lessons",
+      "findat_article_revisions",
+      "findat_article_comments",
+      "findat_platform_events",
+      "findat_cloud_workstations",
+      "findat_site_patches"
+    ],
+    "edge_functions": [
+      "findat-username-login",
+      "findat-admin-users",
+      "findat-bootstrap-admin",
+      "findat-developer-deploy"
+    ],
+    "frontend_secrets": false,
+    "administrator_registry": "grey, disabled and protected",
+    "migration": "FINDAT-AUTH-RBAC-POSTGRES-SETUP.sql",
+    "client_login_fix": {
+      "unconfirmed_email_detection": true,
+      "automatic_missing_profile_repair": true,
+      "admin_email_confirmation_control": true,
+      "password_reset_also_confirms_client": true
+    }
+  },
+  "editor_workflow_upgrade": {
+    "transient_form_inputs": true,
+    "article_editor_clears_after_success": true,
+    "admin_direct_publish": true,
+    "admin_review_actions": [
+      "review",
+      "edit",
+      "approve",
+      "return",
+      "delete"
+    ],
+    "admin_delete_published": true,
+    "cover_photo_roles": [
+      "admin",
+      "consultant",
+      "client"
+    ],
+    "article_data_tools": [
+      "CSV/TSV table",
+      "statistical summary",
+      "bar chart",
+      "line chart",
+      "pie chart",
+      "browser Python chart studio",
+      "Matplotlib",
+      "NumPy",
+      "pandas",
+      "SciPy",
+      "optional Seaborn",
+      "normal distribution curves",
+      "box plots",
+      "histograms"
+    ],
+    "workspace_brand": "CONSULTANTS",
+    "database_upgrade": "FINDAT-EDITOR-WORKFLOW-UPGRADE.sql"
+  },
+  "collaboration_and_delegated_publishing": {
+    "standard_publish_button": "administrator only",
+    "delegated_consultant_publication": "article-specific assignment by an administrator",
+    "bulk_publisher_assignment": true,
+    "collaborator_picker": "always-clickable button and active-user profile modal; names without role labels; all active Client, Consultant and Administrator profiles",
+    "maximum_collaborators": 5,
+    "requests": "accept or reject collaboration notifications",
+    "accepted_collaborator_editing": true,
+    "contributor_byline_layout": "draggable locked face-and-name cards with per-card sizing",
+    "published_contributors": true,
+    "database_upgrade": "FINDAT-COLLABORATION-PUBLISHING-UPGRADE.sql",
+    "profile_photos": "user-uploaded Supabase Storage avatar with initials fallback",
+    "request_reliability": "durable Postgres requests with incoming/outgoing response history, manual refresh, Realtime updates and 10-second polling fallback",
+    "response_history": [
+      "pending",
+      "accepted",
+      "rejected",
+      "cancelled"
+    ],
+    "accepted_collaborator_invitations": "accepted collaborators may add people but only the author or Administrator may remove existing collaborators",
+    "reliability_database_fix": "FINDAT-COLLABORATION-REQUESTS-RELIABILITY-FIX.sql",
+    "notification_bell": "Font Awesome bell icon with unread count from Supabase Postgres notifications",
+    "notification_history": "read tracking plus clear-history control; unanswered requests are preserved",
+    "article_visibility": "pending collaboration invitations do not expose article content; access begins after acceptance",
+    "collaborator_selection_count": "live 0–5 counter in the picker and saved counter on the editor",
+    "profile_picture_reliability": "Supabase Storage upload with authenticated path policies and Postgres image fallback",
+    "latest_reliability_database_fix": "FINDAT-COLLABORATION-NOTIFICATIONS-PROFILE-FIX.sql",
+    "legacy_collaborator_shortcut": "converted into pending requests; automatic article exposure removed",
+    "existing_request_backfill": "older pending, accepted and rejected collaboration rows are added to notification history",
+    "ambiguous_article_id_fix": "collaborator RPC returns the table row type and uses the primary-key constraint explicitly"
+  },
+  "python_chart_studio": {
+    "runtime": "Pyodide module Web Worker",
+    "execution": "client-side browser worker; no Python code sent to FINDAT servers",
+    "libraries": [
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "SciPy",
+      "Seaborn on demand"
+    ],
+    "templates": [
+      "Matplotlib",
+      "Seaborn",
+      "normal distribution",
+      "box plot",
+      "histogram",
+      "custom Python"
+    ],
+    "article_output": "generated PNG chart inserted into article content"
+  },
+  "courses_profiles_and_article_activity": {
+    "course_catalogue": "Udemy-style course cards in Recordings",
+    "seed_course": {
+      "title": "Data Analytics Foundations",
+      "rating": 5.0,
+      "thumbnail": "protected Data-Thumbnail poster"
+    },
+    "administrator_course_manager": [
+      "course cover picture",
+      "course content",
+      "instructor name",
+      "professional qualifications",
+      "rating",
+      "draft/published status",
+      "lesson videos",
+      "lesson thumbnail pictures",
+      "documents",
+      "lesson content",
+      "lesson scripts",
+      "quizzes",
+      "edit and delete"
+    ],
+    "editable_profile_fields": [
+      "first name",
+      "last name",
+      "telephone",
+      "organisation",
+      "country",
+      "qualifications",
+      "job title",
+      "place of work",
+      "profile picture"
+    ],
+    "writing_desk_published_filter": true,
+    "in_progress_status": [
+      "Draft",
+      "Rejected"
+    ],
+    "article_activity": [
+      "dated revision history",
+      "comments",
+      "threaded replies",
+      "bell notifications",
+      "Realtime refresh"
+    ],
+    "published_contributor_layout": "automatic horizontal wrapping with photos, names and first three qualifications",
+    "database_upgrade": "FINDAT-COURSES-PROFILES-ARTICLE-COLLABORATION-UPGRADE.sql",
+    "verification": "FINDAT-COURSES-PROFILES-ARTICLE-COLLABORATION-VERIFY.sql"
+  },
+  "administrator_activity_workstations_and_developer_studio": {
+    "consultant_editorial_save": "existing records use an UPDATE constrained by article id; new records use INSERT",
+    "clickable_notifications": "comment and article notifications open the relevant article activity and reply interface",
+    "analytics_studio": {
+      "layout": "Visual Studio and Python Studio are evenly aligned side-by-side",
+      "visuals": [
+        "bar",
+        "line",
+        "area",
+        "pie",
+        "doughnut",
+        "scatter",
+        "table",
+        "statistical summary"
+      ],
+      "aggregations": [
+        "sum",
+        "average",
+        "count",
+        "minimum",
+        "maximum"
+      ],
+      "python_run_button": "play icon"
+    },
+    "administrator_accounts": {
+      "create_additional_administrators": true,
+      "promote_existing_client_or_consultant": true,
+      "server_side_auth_metadata": true
+    },
+    "cloud_workstations": {
+      "administrator_assignment": true,
+      "password_hashing": "Postgres pgcrypto bcrypt",
+      "client_password_verification": "security-definer RPC; hashes never returned to browsers"
+    },
+    "cloud_access_copy": "Click the arrow to access FINDAT Cloud",
+    "activity_dashboard": {
+      "first_party_events": [
+        "page/workspace views",
+        "login",
+        "logout",
+        "article open/save",
+        "information retrieval",
+        "comments",
+        "workstation assignment",
+        "developer patches"
+      ],
+      "visitor_origin": "profile country when signed in; otherwise timezone/language country signal",
+      "exit_signals": [
+        "page hidden",
+        "page closed or navigated away",
+        "user signed out"
+      ],
+      "combined_audit_trail": true
+    },
+    "developer_studio": {
+      "languages": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Python",
+        "Java source"
+      ],
+      "live_apply": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "python": "browser sandbox worker",
+      "java": "source storage and structural validation; external isolated Java service required for compilation",
+      "production_deploy": "private Netlify build hook through authenticated Supabase Edge Function"
+    },
+    "database_upgrade": "FINDAT-ADMIN-ACTIVITY-WORKSTATIONS-DEVELOPER-UPGRADE.sql",
+    "verification": "FINDAT-ADMIN-ACTIVITY-WORKSTATIONS-DEVELOPER-VERIFY.sql"
+  }
+}

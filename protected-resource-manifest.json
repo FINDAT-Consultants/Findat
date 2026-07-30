@@ -1,0 +1,30 @@
+{
+  "页面7.fdx": {
+    "source": "integration-source/page.integrated.html",
+    "plain_bytes": 1411940,
+    "encrypted_bytes": 1411956,
+    "sha256": "ebe1ee329dfe5d9524bb5faea53d231b6ebc92e9cf8096de090b8ba85370a02c",
+    "encrypted_sha256": "d29795eb76296c32ea0587cf7eb893a0344c595286abf117b8ec658c32d80c1a"
+  },
+  "样式8.fdx": {
+    "source": "integration-source/styles.integrated.css",
+    "plain_bytes": 465801,
+    "encrypted_bytes": 465817,
+    "sha256": "f7dc7512a8a808a58e7487831644ad251202b3c1e57a5e41e8cd3044880a4fbd",
+    "encrypted_sha256": "c1a48775269c009d34dcf77b4567822a6c3d66d6dffd4fbbb96776a1dd7c15d4"
+  },
+  "逻辑9.fdx": {
+    "source": "integration-source/app.integrated.js",
+    "plain_bytes": 682659,
+    "encrypted_bytes": 682675,
+    "sha256": "af32b1139dbb9977df203f39abe8ce87c18caabf77c6240106b7814c23c38868",
+    "encrypted_sha256": "4968f80de1d720845aca298029be327d21d8c1f14f2ef46b8f5d19aa8b78b850"
+  },
+  "图像6.fdx": {
+    "source": "Classes/Data-Thumbnail.jpg",
+    "plain_bytes": 262257,
+    "encrypted_bytes": 262273,
+    "sha256": "03e42f54d087ffe4a31ec309ec8b9264136b078f70a2f906b314cbf175758b2c",
+    "encrypted_sha256": "a4aea062ed2ccee5f45a22a7444c781f979c1de16ccc41c8a5446dcea93833df"
+  }
+}

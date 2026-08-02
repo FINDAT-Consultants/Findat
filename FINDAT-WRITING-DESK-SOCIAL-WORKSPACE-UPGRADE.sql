@@ -1,0 +1,261 @@
+-- FINDAT Writing Desk social workspace
+-- Additive upgrade: reactions, bookmarks, follows, public article discussion, direct messages, online presence and private typing signals.
+
+create table if not exists public.findat_article_reactions (
+  id uuid primary key default gen_random_uuid(),
+  article_id uuid not null references public.findat_articles(id) on delete cascade,
+  user_id uuid not null references public.findat_profiles(id) on delete cascade default auth.uid(),
+  reaction_type text not null check (reaction_type in ('like','repost')),
+  created_at timestamptz not null default now(),
+  unique (article_id, user_id, reaction_type)
+);
+
+create table if not exists public.findat_article_bookmarks (
+  article_id uuid not null references public.findat_articles(id) on delete cascade,
+  user_id uuid not null references public.findat_profiles(id) on delete cascade default auth.uid(),
+  created_at timestamptz not null default now(),
+  primary key (article_id, user_id)
+);
+
+create table if not exists public.findat_user_follows (
+  follower_id uuid not null references public.findat_profiles(id) on delete cascade default auth.uid(),
+  following_id uuid not null references public.findat_profiles(id) on delete cascade,
+  created_at timestamptz not null default now(),
+  primary key (follower_id, following_id),
+  check (follower_id <> following_id)
+);
+
+create table if not exists public.findat_social_comments (
+  id uuid primary key default gen_random_uuid(),
+  article_id uuid not null references public.findat_articles(id) on delete cascade,
+  author_id uuid not null references public.findat_profiles(id) on delete cascade default auth.uid(),
+  parent_id uuid references public.findat_social_comments(id) on delete cascade,
+  body text not null check (char_length(btrim(body)) between 1 and 4000),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.findat_direct_messages (
+  id uuid primary key default gen_random_uuid(),
+  sender_id uuid not null references public.findat_profiles(id) on delete cascade default auth.uid(),
+  recipient_id uuid not null references public.findat_profiles(id) on delete cascade,
+  body text not null check (char_length(btrim(body)) between 1 and 4000),
+  created_at timestamptz not null default now(),
+  read_at timestamptz,
+  check (sender_id <> recipient_id)
+);
+
+create index if not exists findat_article_reactions_article_idx on public.findat_article_reactions(article_id, created_at desc);
+create index if not exists findat_article_bookmarks_user_idx on public.findat_article_bookmarks(user_id, created_at desc);
+create index if not exists findat_user_follows_follower_idx on public.findat_user_follows(follower_id, created_at desc);
+create index if not exists findat_user_follows_following_idx on public.findat_user_follows(following_id, created_at desc);
+create index if not exists findat_social_comments_article_idx on public.findat_social_comments(article_id, created_at asc);
+create index if not exists findat_direct_messages_sender_idx on public.findat_direct_messages(sender_id, recipient_id, created_at desc);
+create index if not exists findat_direct_messages_recipient_idx on public.findat_direct_messages(recipient_id, sender_id, created_at desc);
+
+alter table public.findat_article_reactions enable row level security;
+alter table public.findat_article_bookmarks enable row level security;
+alter table public.findat_user_follows enable row level security;
+alter table public.findat_social_comments enable row level security;
+alter table public.findat_direct_messages enable row level security;
+
+-- Reactions are visible to signed-in users so aggregate counts can be rendered.
+drop policy if exists "findat reactions visible to members" on public.findat_article_reactions;
+create policy "findat reactions visible to members"
+on public.findat_article_reactions for select
+to authenticated
+using (
+  public.findat_user_is_active(auth.uid())
+  and public.findat_can_access_article(article_id, auth.uid())
+);
+
+drop policy if exists "findat members create own reactions" on public.findat_article_reactions;
+create policy "findat members create own reactions"
+on public.findat_article_reactions for insert
+to authenticated
+with check (
+  user_id = auth.uid()
+  and public.findat_user_is_active(auth.uid())
+  and public.findat_can_access_article(article_id, auth.uid())
+);
+
+drop policy if exists "findat members remove own reactions" on public.findat_article_reactions;
+create policy "findat members remove own reactions"
+on public.findat_article_reactions for delete
+to authenticated
+using (user_id = auth.uid() or public.findat_is_admin());
+
+-- Bookmarks are private to the member who saved them.
+drop policy if exists "findat members view own bookmarks" on public.findat_article_bookmarks;
+create policy "findat members view own bookmarks"
+on public.findat_article_bookmarks for select
+to authenticated
+using (user_id = auth.uid());
+
+drop policy if exists "findat members create own bookmarks" on public.findat_article_bookmarks;
+create policy "findat members create own bookmarks"
+on public.findat_article_bookmarks for insert
+to authenticated
+with check (
+  user_id = auth.uid()
+  and public.findat_user_is_active(auth.uid())
+  and public.findat_can_access_article(article_id, auth.uid())
+);
+
+drop policy if exists "findat members remove own bookmarks" on public.findat_article_bookmarks;
+create policy "findat members remove own bookmarks"
+on public.findat_article_bookmarks for delete
+to authenticated
+using (user_id = auth.uid());
+
+-- Follow relationships are visible to members for connection counts.
+drop policy if exists "findat follows visible to members" on public.findat_user_follows;
+create policy "findat follows visible to members"
+on public.findat_user_follows for select
+to authenticated
+using (true);
+
+drop policy if exists "findat members follow from own account" on public.findat_user_follows;
+create policy "findat members follow from own account"
+on public.findat_user_follows for insert
+to authenticated
+with check (follower_id = auth.uid() and following_id <> auth.uid());
+
+drop policy if exists "findat members unfollow from own account" on public.findat_user_follows;
+create policy "findat members unfollow from own account"
+on public.findat_user_follows for delete
+to authenticated
+using (follower_id = auth.uid());
+
+-- Published-article discussion is readable and writable by authenticated members.
+drop policy if exists "findat social comments visible on readable articles" on public.findat_social_comments;
+create policy "findat social comments visible on readable articles"
+on public.findat_social_comments for select
+to authenticated
+using (
+  public.findat_user_is_active(auth.uid())
+  and public.findat_can_access_article(article_id, auth.uid())
+);
+
+drop policy if exists "findat members comment on readable articles" on public.findat_social_comments;
+create policy "findat members comment on readable articles"
+on public.findat_social_comments for insert
+to authenticated
+with check (
+  author_id = auth.uid()
+  and public.findat_user_is_active(auth.uid())
+  and public.findat_can_access_article(article_id, auth.uid())
+);
+
+drop policy if exists "findat authors edit own social comments" on public.findat_social_comments;
+create policy "findat authors edit own social comments"
+on public.findat_social_comments for update
+to authenticated
+using (author_id = auth.uid())
+with check (author_id = auth.uid());
+
+drop policy if exists "findat authors remove own social comments" on public.findat_social_comments;
+create policy "findat authors remove own social comments"
+on public.findat_social_comments for delete
+to authenticated
+using (author_id = auth.uid() or public.findat_is_admin());
+
+-- Direct messages are private to the two participants.
+drop policy if exists "findat message participants can read" on public.findat_direct_messages;
+create policy "findat message participants can read"
+on public.findat_direct_messages for select
+to authenticated
+using (sender_id = auth.uid() or recipient_id = auth.uid());
+
+drop policy if exists "findat members send own messages" on public.findat_direct_messages;
+create policy "findat members send own messages"
+on public.findat_direct_messages for insert
+to authenticated
+with check (
+  sender_id = auth.uid()
+  and public.findat_user_is_active(auth.uid())
+  and recipient_id <> auth.uid()
+  and exists (select 1 from public.findat_profiles p where p.id = recipient_id and p.active is not false)
+);
+
+drop policy if exists "findat recipients mark messages read" on public.findat_direct_messages;
+create policy "findat recipients mark messages read"
+on public.findat_direct_messages for update
+to authenticated
+using (recipient_id = auth.uid())
+with check (recipient_id = auth.uid());
+
+drop policy if exists "findat senders remove own messages" on public.findat_direct_messages;
+create policy "findat senders remove own messages"
+on public.findat_direct_messages for delete
+to authenticated
+using (sender_id = auth.uid() or public.findat_is_admin());
+
+grant select, insert, delete on public.findat_article_reactions to authenticated;
+grant select, insert, delete on public.findat_article_bookmarks to authenticated;
+grant select, insert, delete on public.findat_user_follows to authenticated;
+grant select, insert, update, delete on public.findat_social_comments to authenticated;
+grant select, insert, delete on public.findat_direct_messages to authenticated;
+grant update (read_at) on public.findat_direct_messages to authenticated;
+
+
+-- Realtime Presence and Broadcast authorization.
+-- Presence is shared among active authenticated FINDAT members.
+-- Typing signals are restricted to the two UUIDs encoded in a private chat topic:
+-- findat:chat:<participant-uuid>:<participant-uuid>
+drop policy if exists "findat realtime social signals read" on realtime.messages;
+create policy "findat realtime social signals read"
+on realtime.messages for select
+to authenticated
+using (
+  public.findat_user_is_active(auth.uid())
+  and (
+    (
+      realtime.messages.extension = 'presence'
+      and (select realtime.topic()) = 'findat:workspace:presence'
+    )
+    or
+    (
+      realtime.messages.extension = 'broadcast'
+      and split_part((select realtime.topic()), ':', 1) = 'findat'
+      and split_part((select realtime.topic()), ':', 2) = 'chat'
+      and (
+        split_part((select realtime.topic()), ':', 3) = auth.uid()::text
+        or split_part((select realtime.topic()), ':', 4) = auth.uid()::text
+      )
+    )
+  )
+);
+
+drop policy if exists "findat realtime social signals write" on realtime.messages;
+create policy "findat realtime social signals write"
+on realtime.messages for insert
+to authenticated
+with check (
+  public.findat_user_is_active(auth.uid())
+  and (
+    (
+      realtime.messages.extension = 'presence'
+      and (select realtime.topic()) = 'findat:workspace:presence'
+    )
+    or
+    (
+      realtime.messages.extension = 'broadcast'
+      and split_part((select realtime.topic()), ':', 1) = 'findat'
+      and split_part((select realtime.topic()), ':', 2) = 'chat'
+      and (
+        split_part((select realtime.topic()), ':', 3) = auth.uid()::text
+        or split_part((select realtime.topic()), ':', 4) = auth.uid()::text
+      )
+    )
+  )
+);
+
+do $$
+begin
+  begin alter publication supabase_realtime add table public.findat_article_reactions; exception when duplicate_object then null; end;
+  begin alter publication supabase_realtime add table public.findat_article_bookmarks; exception when duplicate_object then null; end;
+  begin alter publication supabase_realtime add table public.findat_user_follows; exception when duplicate_object then null; end;
+  begin alter publication supabase_realtime add table public.findat_social_comments; exception when duplicate_object then null; end;
+  begin alter publication supabase_realtime add table public.findat_direct_messages; exception when duplicate_object then null; end;
+end $$;
